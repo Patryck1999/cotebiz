@@ -1,0 +1,44 @@
+{% extends "pagina-modelo.html" %}
+{% block content %}
+<h1 class="text-left ">Adicionar Pedido</h1>
+<div class="container ml-0 ">
+    <div>
+        <label for="produto"><strong>Produto:</strong></label>
+        <select name="produto">   
+            <option value=''>Selecione um item</option>
+
+            {% for produto in produtos %}
+        
+                <option>{{produto}}</option>
+            {% endfor %}
+        </select>
+    </div>
+    <div>
+        <label for="cliente"><strong>Cliente:</strong></label>
+        <select name="cliente">   
+            <option value=''>Selecione um item</option>
+
+            {% for cliente in clientes %}
+        
+                <option>{{cliente}}</option>
+            {% endfor %}
+        </select>
+    </div>
+    <div>
+        <label for="quantidade"><strong>Quantidade:</strong></label>
+        <input id="quantidade" name="quantidade" type="number">
+    </div>
+    <div>
+        <label for="email"><strong>Email:</strong></label>
+        <select name="email">   
+            <option value=''>Selecione um item</option>
+            {% for email in emails %}
+        
+                <option>{{email}}</option>
+            {% endfor %}
+        </select>
+    </div>
+    <button type="submit" class="btn btn-primary m-2">
+            Salvar pedido
+    </button>
+{% endblock %}

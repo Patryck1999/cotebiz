@@ -1,0 +1,17 @@
+#menu a {
+    color: white;
+    background-color: #252525;
+    padding-bottom: 5px;
+    margin-bottom: 5px;
+  }
+  
+  
+  #menu a:hover {
+    color:gray;
+    background-color: #252525;
+  }
+  
+  .container{
+      padding: 5px;
+      width: 100%;
+  }
