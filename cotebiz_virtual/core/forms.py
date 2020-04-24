@@ -1,5 +1,5 @@
 from django import forms
-from .models import Fornecedor, Categoria, Email_fornecedor
+from .models import Fornecedor, Categoria, Email_fornecedor, Pedido_de_cotacao
 
 class FornecedorForm(forms.ModelForm):
     class Meta:
@@ -16,3 +16,8 @@ class Email_fornecedorForm(forms.ModelForm):
     class Meta:
         model = Email_fornecedor
         fields = ['email']
+
+class Pedido_de_cotacaoForm(forms.ModelForm):
+    class Meta:
+        model = Pedido_de_cotacao
+        fields = ['pedido_de_cotacao', 'quantidade', 'produto', 'cliente', 'categoria'] 

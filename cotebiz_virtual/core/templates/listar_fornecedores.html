@@ -1,11 +1,10 @@
 {% extends "pagina-modelo.html" %}
 {% block content %}
+
 <div class="conteudo">
     <div class="container">
         <div class="row w-100">
-            <a class="nav-link ml-4" href="/cadastrar_fornecedor/"><button>Cadastro de Fornecedor</button></a>
-            <a class="nav-link ml-4" href="/adicionar_categoria/"><button>Cadastro de Categoria</button></a>
-            <a class="nav-link ml-4" href="/adicionar_email_fornecedor/"><button>Cadastro do Email de Fornecedor</button></a>
+            <a onclick=limpar_campos() class="nav-link ml-4" href="/cadastrar_fornecedor/"><button type="button" class="btn btn-info">Cadastro de Fornecedor</button></a>
         </div>
     </div>
     <h1 class="text-center "><u>Lista de Fornecedores</u></h1>

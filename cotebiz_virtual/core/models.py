@@ -37,10 +37,10 @@ class Fornecedor(models.Model):
     cidade = models.CharField('Cidade', max_length=30)
     uf = models.CharField('UF', max_length=30)
     numero = models.CharField('Número', max_length=10)
-    telefone = models.CharField('Telefone', max_length=16)
-    celular = models.CharField('Celular', max_length=17)
+    telefone = models.CharField('Telefone', max_length=16, null=True, blank=True)
+    celular = models.CharField('Celular', max_length=17, null=True, blank=True)
     email = models.ForeignKey(Email_fornecedor, on_delete=models.CASCADE)
-    observacao = models.CharField('Observação', max_length=100)
+    observacao = models.CharField('Observação', max_length=100, null=True, blank=True)
 
     class Meta:
         verbose_name ='Fornecedor'
@@ -94,8 +94,7 @@ class Cliente(models.Model):
     def __str__(self):
         return str(self.cliente)
 
-
-"""        
+     
 class Pedido_de_cotacao(models.Model):
     pedido_de_cotacao = models.CharField('Pedido', max_length=20)
     quantidade = models.CharField('quantidade', max_length=5)
@@ -122,4 +121,3 @@ class Sala_de_leilao(models.Model):
 
     def __str__(self):
         return str(self.pedido)   
-"""

@@ -3,8 +3,8 @@ from django.views.decorators.csrf import csrf_protect
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
-from .models import Fornecedor, Categoria, Email_fornecedor, Cliente, Produto
-from .forms import FornecedorForm, CategoriaForm, Email_fornecedorForm
+from .models import Fornecedor, Categoria, Email_fornecedor, Cliente, Produto, Pedido_de_cotacao
+from .forms import FornecedorForm, CategoriaForm, Email_fornecedorForm, Pedido_de_cotacaoForm
 
 def login_user(request):
     return render(request, 'login.html')
@@ -45,14 +45,17 @@ def cadastrar_fornecedor(request):
     if str(request.user) == 'admin':
         form = FornecedorForm(request.POST or None)
         context = {
-            'form': form,
+            'form': form
         }
-        if form.is_valid():
-            form.save()
-            return redirect('listar_fornecedores')
+        if (request.method)== 'POST':
+            if form.is_valid():
+                form.save()
+                return redirect('listar_fornecedores')
+            else:
+                messages.error(request, 'Erro ao cadastrar Fornecedor! Fornecedor já está cadastrado!')
         return render(request, 'cadastrar_fornecedor.html', context)
-    else:
-        return redirect('/')
+
+        
 
 @login_required(login_url='/login_user/')
 def fornecedor_detalhar(request, id):
@@ -109,6 +112,23 @@ def adicionar_pedido(request):
     else: 
         return redirect('/')
 
+def adicionar_produto(request):
+    if str(request.user) == 'admin':
+        form = Pedido_de_cotacaoForm(request.POST or None)
+        produtos = Produto.objects.all()
+        quantidade = Pedido_de_cotacao.objects.all()
+        context = {
+            produtos:'produtos',
+            quantidade:'quantidade',
+            form:'form'
+        }
+
+        
+        return render(request, 'pedido.html', context)
+    else: 
+        return redirect('/')
+
+
 @login_required(login_url='/login_user/')
 def adicionar_categoria(request):
     if str(request.user) == 'admin':
@@ -118,7 +138,7 @@ def adicionar_categoria(request):
         }
         if form.is_valid():
             form.save()
-            return redirect('listar_fornecedores')
+            return redirect('cadastrar_fornecedor')
         return render(request, 'adicionar_categoria.html', context)
     else:
         return redirect('/')
@@ -132,8 +152,8 @@ def adicionar_email_fornecedor(request):
         }
         if form.is_valid():
             form.save()
-            return redirect('listar_fornecedores')
-        return render(request, 'adicionar_Email_fornecedor.html', context)
+            return redirect('cadastrar_fornecedor')
+        return render(request, 'adicionar_email_fornecedor.html', context)
     else:
         return redirect('/')
 

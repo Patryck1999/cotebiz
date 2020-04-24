@@ -12,6 +12,7 @@ urlpatterns = [
     path('atualizar_fornecedor/<int:id>/', views.atualizar_fornecedor, name='atualizar_fornecedor'),
     path('delete/<int:id>/', views.delete_fornecedor, name='delete_fornecedor'),
     path('adicionar_pedido/', views.adicionar_pedido, name='adicionar_pedido'),
+    path('adicionar_produto/', views.adicionar_produto, name='adicionar_produto'),
     path('adicionar_categoria/', views.adicionar_categoria, name='adicionar_categoria'),
     path('adicionar_email_fornecedor/', views.adicionar_email_fornecedor, name='adicionar_email_fornecedor'),
 ]

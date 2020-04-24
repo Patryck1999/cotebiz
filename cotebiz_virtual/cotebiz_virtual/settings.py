@@ -75,14 +75,9 @@ WSGI_APPLICATION = 'cotebiz_virtual.wsgi.application'
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
 
 DATABASES = {
-    'default': {
+ 'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': os.environ.get('DB_NAME', 'cotebiz'),
-        'USER': os.environ.get('DB_USER', 'postgres'),
-        'PASSWORD': os.environ.get('DB_PASS', 'g@mer1999p'),
-        'HOST': 'localhost',
-        'PORT': '5432',
+        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
     }
 
