@@ -11,7 +11,7 @@ python -m venv nome_dado_a_ser_dado_ao_virtual_env
 
 passo 2 - ativar o virtual env
 
-.\nome_dado_a_ser_dado_ao_virtual_env\Scripts\activate
+.\nome_dado_ao_virtual_env\Scripts\activate
 
 passo 3 - Instalar os requisitos para rodar o projeto 
 
