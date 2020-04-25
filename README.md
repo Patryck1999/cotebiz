@@ -33,6 +33,6 @@ passo 7 - apos estes comandos todos podemos executar nosso programa da seguinte 
 
 python manage.py runserver
 
-passo 7 - clicar no link para acessar
+passo 8 - clicar no link para acessar
 
 Link: http://127.0.0.1:8000/ ou colar no navegador e caso queira adicionar usuarios acessando http://127.0.0.1:8000/admin será possivel
