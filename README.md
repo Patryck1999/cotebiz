@@ -13,34 +13,26 @@ passo 2 - ativar o virtual env
 
 .\nome_dado_a_ser_dado_ao_virtual_env\Scripts\activate
 
-passo 3 - Instalar o pacote django
+passo 3 - Instalar os requisitos para rodar o projeto 
 
-python -m pip install django
+pip install -r requeriments.txt
 
-passo 4 - Fora do Visual Studio Instale o postgres e defina o usuario e senha as mesmas que estão no projeto que sa~os seguintes:
+passo 4 - migrar as tabelas default
 
-usuario: postgres e senha: g@mer1999p
+python manage.py makemigrations
 
-passo 5 - instale o postbird e configure
-
-Entre com usuario e senha do postgress e crie um banco de dados chamado cotebiz
-
-passo 6 - voltando no visual studio e continuando no ambiente virtual instalar o psycopg2 para integrar com banco de dados postgres
-
-python - m pip install psycopg2
-
-passo 7 - migrar as tabelas default
+passo 5 - aplicar as migrações das tabelas default
 
 python manage.py migrate
 
-passo 8- criar usuario para logar como admin
+passo 6- criar usuario para logar como admin
 
 python manage.py createsuperuser
 
-passo 9 - apos estes comandos todos podemos executar nosso programa da seguinte maneira:
+passo 7 - apos estes comandos todos podemos executar nosso programa da seguinte maneira:
 
 python manage.py runserver
 
-passo 10 - clicar no link para acessar
+passo 7 - clicar no link para acessar
 
 Link: http://127.0.0.1:8000/ ou colar no navegador e caso queira adicionar usuarios acessando http://127.0.0.1:8000/admin será possivel
