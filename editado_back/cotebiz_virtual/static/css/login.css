@@ -1,0 +1,68 @@
+*{
+   box-sizing: border-box;
+}
+html,body{
+    margin: 0 auto; 
+}
+
+body{
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    background-image: radial-gradient( #ffffff, #0678a8);
+    font-family: 'Open-sans', sans-serif;
+}
+
+main{
+    height: 100%;
+}
+form.formulario-login{
+    position: relative;
+    text-align: center;
+    top: 8em;
+    
+}
+div.container{
+    background-color: #ffffff;
+    width: 30%;
+    height: 60%;
+    border-radius: 12px;
+    min-width: 500px;
+}
+div.formulario-item, input{
+    padding-bottom: 1.2em;
+    padding-top: 1.2em;
+    border: none;
+    border-radius: 1em;
+    margin-left: auto;
+    margin-right: auto;
+    font-weight: bold;
+    color: rgb(45, 23, 145);   
+}
+img{
+    width: 60%;
+    padding: 5%;
+}
+label{
+    font-family: 'Opens-sans', sans-serif;
+    text-transform: uppercase;
+    color: #96989a;
+
+}
+input{
+    width: 27em;
+    border-style: groove;
+}
+.botao{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.back{
+    padding: 5%;
+}
+button.btn{
+    padding: .9rem;
+    width: 50%;
+}

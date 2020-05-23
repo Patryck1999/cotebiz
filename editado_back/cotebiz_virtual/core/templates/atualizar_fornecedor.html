@@ -1,0 +1,113 @@
+{% extends "pagina-modelo.html" %}
+{% block content %}
+{% block style %}
+    <link rel="stylesheet" type="text/css" href="/static/css/fornecedor.css">
+{% endblock %}
+
+<form id="myForm" method="POST">{% csrf_token %}
+    <div class="container ">
+        <h1 class="text-center ">Alteração do fornecedor</h1>
+        <div class="botao">
+            {% for message in messages %}
+                <div class="alert alert-danger">
+                    <strong> {{ message }} </strong>
+                </div>
+            {% endfor %}
+        </div>
+            <h2>Informações Básicas</h2>
+            <hr>
+        <div class="form-row">
+            <div class="form-group col-md-4">
+                <label for="id_fornecedor"><strong>Fornecedor:</strong></label>
+                {{ form.fornecedor }}
+            </div>
+        
+            <div class="form-group col-md-4">
+                <label for="id_razao_social"><strong>Razão Social:</strong></label>
+                {{ form.razao_social }}
+            </div>
+            <div class="form-group col-md-2">
+                <label for="id_cnpj"><strong>CNPJ:</strong></label>
+                {{ form.cnpj }}
+            </div>
+            <div class="form-group col-md-2">
+                <label for="id_inscricao_estadual"><strong>I.Estadual:</strong></label>
+                {{ form.inscricao_estadual }} 
+            </div>
+            <div class="form-group col-md-12">
+                <h2>Tipo de Categoria</h2>
+                <hr>
+            </div>
+            <div class="form-group col-md-12">
+                <label for="id_categoria"><strong>Categoria:</strong></label>
+                {{ form.categoria }} <a href="/adicionar_categoria/"><img src="/static/imagens/add.png" alt="Adicionar Categoria"></a>
+            </div>
+            <div class="form-group col-md-12">
+                <h2>Localização</h2>
+                <hr>
+            </div>
+            <div class="form-group col-md-2">
+                <label for="id_cep"><strong>CEP:</strong></label>
+                {{ form.cep }} 
+            </div>
+            <div class="form-group col-md-4">
+                <label for="id_rua"><strong>Rua:</strong></label>
+                {{ form.rua }}
+            </div>
+            <div class="form-group col-md-4">
+                <label for="id_bairro"><strong>Bairro:</strong></label>
+                {{ form.bairro }}
+            </div>
+            <div class="form-group col-md-4">
+                <label for="id_cidade"><strong>Cidade:</strong></label>
+                {{ form.cidade }}
+            </div>
+            <div class="form-group col-md-1">
+                <label for="id_uf"><strong>UF:</strong></label>
+                {{ form.uf }}
+            </div>
+            <div class="form-group col-md-2">
+                <label for="id_numero"><strong>Número:</strong></label>
+                {{ form.numero }}
+            </div>
+            <div class="form-group col-md-12">
+                <h2>Contato</h2>
+                <hr>
+            </div>
+            <div class="form-group col-md-2">
+                <label for="id_telefone"><strong>Telefone:</strong></label>
+                {{ form.telefone }}
+            </div>
+            <div class="form-group col-md-2">
+                <label for="id_celular"><strong>Celular:</strong></label>
+                {{ form.celular }}
+            </div>
+            <div class="form-group col-md-6">
+                <div>
+                    <label for="id_email"><strong>Email:</strong></label>
+                </div>
+                {{ form.email }} <a href="/adicionar_email_fornecedor/"> <img src="/static/imagens/add.png" alt=""></a>
+            </div>
+            <div class="form-group col-md-12">
+            <h2>Anotação</h2>
+            <hr>    
+            </div>
+            <div class="form-group col-md-12">
+                <label for="id_observacao"><strong>Observação:</strong></label>
+                {{ form.observacao }}
+            </div>
+            <div class="form-group col-md-6">
+                <button  class="btn btn-primary m-2" type="submit">Salvar</button>
+            
+                <a href="/listar_fornecedores/">
+                    <button type="button" class="btn btn-danger m-2">
+                        Cancelar
+                    </button>
+                </a>
+            
+            </div>
+        </div>
+
+</div>
+</form>
+{% endblock %}

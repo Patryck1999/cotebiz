@@ -1,0 +1,118 @@
+{% extends "pagina-modelo.html" %}
+{% block content %}
+{% block style %}
+    <link rel="stylesheet" type="text/css" href="/static/css/fornecedor.css">
+{% endblock %}
+
+<h1 class="text-center">Detalhes do Fornecedor</h1>
+<div class="modal fade" id="modal_confirm">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Deseja realmente Excluir O fornecedor selecionado: {{fornecedor.fornecedor}}?</h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <div class="modal-body text-right">
+                <a href="/delete/{{fornecedor.id}}/">
+                    <button type="button" class="btn btn-danger">
+                        EXCLUIR
+                    </button>
+                </a>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">
+                        CANCELAR
+                    </button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container ">
+    <h2>Informações Básicas</h2>
+    <hr>
+    <div class="form-row">
+        <div class="form-group col-md-3">
+            <label for="id_fornecedor"><strong>Fornecedor:</strong></label>
+            {{ fornecedor.fornecedor }}
+        </div>
+
+        <div class="form-group col-md-3">
+            <label for="id_razao_social"><strong>Razão Social:</strong></label>
+            {{ fornecedor.razao_social }}
+        </div>
+        <div class="form-group col-md-3">
+            <label for="id_cnpj"><strong>CNPJ:</strong></label>
+            {{ fornecedor.cnpj }}
+        </div>
+        <div class="form-group col-md-3">
+            <label for="id_inscricao_estadual"><strong>I.Estadual:</strong></label>
+            {{ fornecedor.inscricao_estadual }}
+        </div>
+        <div class="form-group col-md-12">
+            <h2>Tipo de Categoria</h2>
+            <hr>
+        </div>
+        <div class="form-group col-md-12">
+            <label for="id_categoria"><strong>Categoria:</strong></label>
+            {{ fornecedor.categoria }}
+        </div>
+        <div class="form-group col-md-12">
+            <h2>Localização</h2>
+            <hr>
+        </div>
+        <div class="form-group col-md-3">
+            <label for="id_cep"><strong>CEP:</strong></label>
+            {{ fornecedor.cep }}
+        </div>
+        <div class="form-group col-md-3">
+            <label for="id_rua"><strong>Rua:</strong></label>
+            {{ fornecedor.rua }}
+        </div>
+        <div class="form-group col-md-3">
+            <label for="id_bairro"><strong>Bairro:</strong></label>
+            {{ fornecedor.bairro }}
+        </div>
+        <div class="form-group col-md-3">
+            <label for="id_cidade"><strong>Cidade:</strong></label>
+            {{ fornecedor.cidade }}
+        </div>
+        <div class="form-group col-md-3">
+            <label for="id_uf"><strong>UF:</strong></label>
+            {{ fornecedor.uf }}
+        </div>
+        <div class="form-group col-md-3">
+            <label for="id_numero"><strong>Número:</strong></label>
+            {{ fornecedor.numero }}
+        </div>
+        <div class="form-group col-md-12">
+            <h2>Contato</h2>
+            <hr>
+        </div>
+        <div class="form-group col-md-3">
+            <label for="id_telefone"><strong>Telefone:</strong></label>
+            {{ fornecedor.telefone }}
+        </div>
+        <div class="form-group col-md-3">
+            <label for="id_celular"><strong>Celular:</strong></label>
+            {{ fornecedor.celular }}
+        </div>
+        <div class="form-group col-md-3">
+                <label for="id_email"><strong>Email:</strong></label>
+            {{ fornecedor.email }}
+        </div>
+        <div class="form-group col-md-12">
+            <h2>Anotação</h2>
+            <hr>
+        </div>
+        <div class="form-group col-md-12">
+            <label for="id_observacao"><strong>Observação:</strong></label>
+            {{ fornecedor.observacao }}
+        </div>
+    </div>
+    <a href="/atualizar_fornecedor/{{fornecedor.id}}">
+        <button type="button" class="btn btn-primary"> Alterar</button>
+    </a>
+    <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#modal_confirm">Excluir</button>
+</div>
+</div>
+</div>
+</div>
+{% endblock %}

@@ -1,0 +1,201 @@
+﻿<!DOCTYPE html> <!-- Diretiva indicando para usar o HTML mais novo disponível pelo navegador-->
+<html> <!-- Indica o início do documento HTML -->
+
+<head> <!-- A tag head contém todas as tags de configuração da página-->
+	<meta charset="UTF-8" /> <!-- configura a codificação de caracteres do navegador para o UTF-8-->
+	<title> 
+	Plataforma de orçamento online - Cotebiz
+	</title><!-- Adiciona o título na aba do navegador-->
+	<link rel="stylesheet" href="css/site.css" />
+	<link rel="stylesheet" href="css/forms.css" />
+</head>
+<body> <!-- A tag body contém o conteúdo que será mostrado ao usuário-->
+	<header id="cabecalho"> <!-- Indica o cabeçalho do nosso documento-->
+		<a href="index.html">
+            <img src="imagens/cotebiz.png" alt="logo da faculdade impacta" /> <!-- anexa imagem e texto alternativo-->
+        </a>
+		<nav> <!-- Indica que o conteúdo é composto de links de navegação-->
+				<a href="#">Fornecedor</a>
+				<a href="cotacao.html">Pedido de cotação</a>
+			
+		</nav>
+	</header>
+	<main> <!-- indica que é o conteúdo principal dessa página -->
+		<h1 class="form-titulo">Faça sua cotação</h1>
+        <form method="POST" action="https://formspree.io/patryckantoniofragoso99@gmail.com">
+			<div class="form-item">
+				<label for="contato-nome">Nome</label>
+				<input type="text" name="Nome" id="contato-nome" placeholder="Exemplo:Nome Sobrenome" required />
+			</div>
+			<div class="form-item">
+				<label for="contato-email">E-Mail</label>
+				<input type="email" name="Email" id="contato-email" placeholder="Exemplo:email@email.com" required />
+			<div class="form-item">
+				<label for="contato-celular">Celular</label><a class="imagem"><img src="imagens/whatsapp.png"/></a>
+				<input type="tel" name="Celular" id="contato-celular" placeholder="Exemplo:11 99999-9999" required />
+			</div>
+			</div>
+			<div class="form-item">
+				<label for="contato-empresa">Empresa</label>
+				<input type="text" name="Empresa" id="contato-empresa" required />
+			</div>
+			<div class="form-item">
+				<label for="contato-cnpj">Cnpj</label>
+				<input type="text" name="Cnpj" id="contato-cnpj" placeholder="Exemplo:99.999.999-999-99" required/>
+			</div>
+			<div class="form-item">
+				<label for="contato-cep">CEP</label>
+				<input type="text" name="CEP" id="contato-cep" placeholder="Exemplo:99999-999" required />
+			</div>
+			<div class="form-item">
+				<label for="contato-endereco">Endereço</label>
+				<input type="text" name="Endereco" id="contato-endereco" placeholder="Exemplo:Rua Nome da Rua, Numero" required />
+			</div>
+			
+			<div class="form-item">
+				<label for="contato-bairro">Bairro</label>
+				<input type="text" name="Bairro" id="contato-bairro" />
+			</div>
+			<div class="form-item">
+			<label  for="contato-cidade">Cidade</label>
+				<select name="Cidade" id="contato-cidade" required >
+					<option value=""> -- Selecione --</option>
+					<option value="RO">Rondônia</option>
+					<option value="AC">Acre</option>
+					<option value="AM">Amazonas</option>
+					<option value="RR">Roraima</option>
+					<option value="PA">Pará</option>
+					<option value="AP">Amapá</option>
+					<option value="TO">Tocantins</option>
+					<option value="MA">Maranhão</option>
+					<option value="PI">Piauí</option>
+					<option value="CE">Ceará</option>
+					<option value="RN">Rio Grande do Norte</option>
+					<option value="PB">Paraíba</option>
+					<option value="PE">Pernambuco</option>
+					<option value="AL">Alagoas</option>
+					<option value="SE">Sergipe</option>
+					<option value="BA">Bahia</option>
+					<option value="MG">Minas Gerais	</option>
+					<option value="ES">Espírito Santo</option>
+					<option value="RJ">Rio de Janeiro</option>
+					<option value="SP">São Paulo</option>
+					<option value="PR">Paraná</option>
+					<option value="SC">Santa Catarina</option>
+					<option value="RS">Rio Grande do Sul</option>
+					<option value="MS">Mato Grosso do Sul</option>
+					<option value="MT">Mato Grosso	</option>
+					<option value="GO">Goiás</option>
+					<option value="DF">Distrito Federal</option>
+					
+				</select>
+			</div>
+			<div class="form-item">
+			<h1 class="contato-titulo-pedido">Pedido de Cotação</h1>
+				<label  for="contato-categoria">Categoria</label>
+				<select name="Categoria" id="contato-categoria" required >
+					<option value=""> -- Selecione --</option>
+					<option value="PL">Produtos de Limpeza</option>
+					<option value="F">Hortifruti</option>
+					<option value="V">Condominios</option>
+				</select>
+			</div>
+			<div class="form-item">
+			 <label  for="contato-quantidade">Quantidade</label>
+					<select name="Quantidade" id="contato-quantidade" required >
+					<option value=""> -- Selecione --</option>
+					<option value="1">1</option>
+					<option value="2">2</option>
+					<option value="3">3</option>
+					<option value="4">4</option>
+					<option value="5">5</option>
+					<option value="6">6</option>
+					<option value="7">7</option>
+					<option value="8">8</option>
+					<option value="9">9</option>
+					<option value="10">10</option>
+					<option value="11">11</option>
+					<option value="12">12</option>
+					<option value="13">13</option>
+					<option value="14">14</option>
+					<option value="15">15</option>
+					<option value="16">16</option>
+					<option value="17">17</option>
+					<option value="18">18</option>
+					<option value="19">19</option>
+					<option value="20">20</option>
+					<option value="21">21</option>
+					<option value="22">22</option>
+					<option value="23">23</option>
+					<option value="24">24</option>
+					<option value="25">25</option>
+					<option value="26">26</option>
+					<option value="27">27</option>
+					<option value="28">28</option>
+					<option value="29">29</option>
+					<option value="30">30</option>
+				</select>
+			</div>
+			<div class="form-item">
+			<label  for="contato-unidade-medida">Unidade de Medida</label>
+				<select name="Medida" id="contato-unidade-medida" required >
+					<option value=""> -- Selecione --</option>
+					<option value="UN">Unidade</option>
+					<option value="CX">Caixa</option>
+					<option value="PT">Pacote</option>
+					<option value="L">Litro</option>
+					<option value="Kg">Kilograma</option>	
+				</select>
+			</div>
+					<div class="form-item">
+			<label  for="contato-marca">Marca</label>
+				<select name="Marca" id="contato-marca" required >
+					<option value=""> -- Selecione --</option>
+					<option value="PP">Pequeno porte</option>
+					<option value="MP">Medio porte</option>
+					<option value="GP">Grande porte</option>
+				</select>
+			</div>
+			<div class="form-item">
+				<label for="contato-nome-marca">Nome da Marca</label>
+				<input id="contato-nome-marca" type="text" name="Nome da marca">
+			</div>
+			<div class="form-item">
+				<label for="contato-produto">Produto</label>
+				<textarea id="contato-produto" type="text" name="Produto" required></textarea>
+			</div>
+			
+			<fieldset class="form-item">
+				<legend >Meio de retorno:</legend>
+				<label for="contato-resposta-email">E-Mail
+					<input id="contato-resposta-email" type="checkbox" name="Resposta" value="E-Mail" />
+				</label>
+				<label for="contato-resposta-celular">Celular</label>
+				<input id="contato-resposta-celular" type="checkbox" name="Resposta" value="Celular" />
+			</fieldset>
+			<div class="acoes">
+				<button class="btn btn-principal" type="submit">Enviar</button>
+			</div>
+        </form>
+	</main>
+	<footer class ="rodape">
+		<a href="#cabecalho" class="topo">Topo</a>
+		<ul class="navegacao">
+			<li>
+				<a href="https://www.facebook.com/cotebizbr/" class="media facebook" target="blank">
+					Facebook
+				</a>
+			</li>
+			<li>
+				<a href="https://www.instagram.com/cotebiz/" class="media instagram" target="blank">
+					Instagram
+				</a>
+			</li>
+			
+		</ul>
+		<p>
+			2019 DPx3 - GrupoOPE - Todos os direitos reservados.
+		</p>
+	</footer>
+</body>
+</html>
