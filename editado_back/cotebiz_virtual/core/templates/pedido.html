@@ -3,11 +3,7 @@
     <link rel="stylesheet" type="text/css" href="/static/css/pedido.css" >
 {% endblock %}
 {% block content %}
-    <style>
-    .delete{
-        display: none;
-    }
-    </style>
+
     <h1 class="text-center ">Cadastro de  Pedido</h1>
     <div class="container">
         <div class="form-row">
@@ -74,45 +70,69 @@
                 </div>
             {% endfor %}
         </div>
-        <div class="input-group">
-            <label for="candidate">Digite o produto:</label><input type="text" class="form-control" id="candidate" required>
-            <div class="input-group-append">
-              <button class="btn btn-add" id="btn" type="button">Add Item</button>
-              <button onclick="removeItem()" class="btn btn-remove" type="button">Remove Item</button>
+        <div class="form-row align-middle" align="center">
+            <div class="col-md-12">
+                <label for="candidate" class="col-md-6">Produto:</label>
+                <input type="text" class="form-control col-md-6" id="candidate" required>
+                <button class="btn btn-outline-primary col-md-6" id="btn" type="button">
+                    <img src="/static/imagens/addprod.png" alt="add" width="2rem">
+                </button>
             </div>
         </div>
           
         <hr>
-        <div class="form-row" >
-            <div class="form-group col-md-2" style="padding-right: 20px;">
+        <div align="center" class="form-row bg-light" >
+            <div class="form-group col-md-3"  style="padding-right: 20px; padding-left: 20px;">
                 <label for="id_produto"><strong>Produto</strong></label>
-                <div class="remove form-row dynamic-list" id="dynamic-list">
-                </div>
-            </div>
-        
-            <div class="form-group col-md-2" id="valor" >
-                <label for="id_valor_base"><strong>Valor Base:</strong></label>
-                <div class="remove form-row"  id="valor-base" style="padding-right: 20px; padding-bottom: 16px;">
 
-                </div>
             </div>
-            <div class="form-group col-md-2" style="padding-right: 20px;">
-                <label for="id_unidade_de_medida"><strong>Uni. de Medida:</strong></label>
-                <div class="remove form-row" id="unidade-medida">
+            <div class="space form-group col-md-2">
+                <label for="id_valor_base"><strong>Categoria</strong></label>
 
-                </div>
             </div>
-            <div class="form-group col-md-2" style="padding-right: 20px;">
-                <label for="id_marca"><strong>Marca:</strong></label>
-                <div class="remove form-row" id="marca">
+            <div class="space form-group col-md-2"  id="valor"  >
+                <label for="id_valor_base"><strong>Valor Base</strong></label>
 
-                </div>
             </div>
-            <div class="form-group col-md-2">
-                <label for="id_excluir"><strong>Excluir:</strong></label>
-                <div class="remove form-row" id="excluir">
+            <div class="space form-group col-md-2"  >
+                <label for="id_unidade_de_medida"><strong>Unidade de Medida</strong></label>
 
-                </div>
+            </div>
+            <div class="space form-group col-md-2"  >
+                <label for="id_marca"><strong>Marca</strong></label>
+
+            </div>
+        </div>
+        <div class="form-row bg-light" >
+            <div class="form-group col-md-3"  style="padding-right: 20px; padding-left: 20px;">
+                <ul class="remove form-row dynamic-list" id="dynamic-list">
+                    
+                </ul>
+            </div>
+            <div class="space form-group col-md-2">
+                <ul class="remove form-row categoria"  id="categoria">
+
+                </ul>
+            </div>
+            <div class="space form-group col-md-2"  id="valor"  >
+                <ul class="remove form-row valor-base"  id="valor-base">
+
+                </ul>
+            </div>
+            <div class="space form-group col-md-2"  >
+                <ul class="remove form-row unidade-medida" id="unidade-medida">
+
+                </ul>
+            </div>
+            <div class="space form-group col-md-2"  >
+                <ul class="remove form-row marca" id="marca">
+
+                </ul>
+            </div>
+            <div class="space form-group col-md-1"  align="center">
+                <ul class="remove form-row excluir" id="excluir">
+
+                </ul>
             </div>
         </div>
         <div class="row">
