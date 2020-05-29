@@ -18,7 +18,7 @@
             <hr>
         <div class="form-row">
             <div class="form-group col-md-4">
-                <label for="id_fornecedor"><strong>Fornecedor:</strong></label>
+                <label for="id_fornecedor"><strong>Nome Fantasia:</strong></label>
                 {{ form.fornecedor }}
             </div>
         
@@ -100,7 +100,7 @@
                 <button  class="btn btn-primary m-2" type="submit">Salvar</button>
             
                 <a href="/listar_fornecedores/">
-                    <button type="button" class="btn btn-danger m-2">
+                    <button onclick="limpar_campos()" type="button" class="btn btn-danger m-2">
                         Cancelar
                     </button>
                 </a>

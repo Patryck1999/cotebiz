@@ -1,0 +1,48 @@
+{% extends "pagina-modelo.html" %}
+{% block content %}
+    <div class="container">
+        <div class="row">
+            <div class="col-xl-8 offset-xl-2 py-5">
+                <h1>Pedido de cotação criado!</h1>
+                <h3>Envie o email aos seus fornedores.</h3>
+
+                <form id="contact-form" method="POST" action="{% url 'envio_de_email_fornecedor' %}" role="form">
+                    {% csrf_token %}
+                    <div class="controls">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="form_email">Email:</label>
+                                    <select id="email">
+                                        {% for item in envio_email %}
+                                        {{ item.email }}
+                                        <option value="{{ item.email }}">{{ item.email }}</option>
+                                        {% endfor %}
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label for="form_message">Corpo da Mensagem:</label>
+                                    <textarea id="form_message" name="mensagem" class="form-control"
+                                        placeholder="Message for me *" rows="4" required="required"
+                                        data-error="Please, leave us a message.">Olá nós da COTEBIZ,
+temos uma nova cotação para você parceiro entre em nossa plataforma!
+
+                                        </textarea>
+                                    <div class="help-block with-errors"></div>
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <input type="submit" class="btn btn-success btn-send" value="Enviar">
+                            </div>
+                        </div>
+                    </div>
+                </form>
+
+            </div>
+        </div>
+    </div>
+{% endblock %}

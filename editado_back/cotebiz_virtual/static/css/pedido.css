@@ -1,32 +1,24 @@
-.btn.lupa{
-    width: 40px;
-    height: 30px;
-    background-color: #2f4550;
-    padding: 5px 10px;
-    cursor: pointer;
+.space{
+    padding-right: 5px !important; 
+    padding-bottom: 16px;
+}
+button.btn.botao1{
+    background-color: #f8f9fa;
+    color:#f8f9fa;
+}
+
+.produto1, .categoria1, .valor_base1, .unidade_medida1, .quantidade1, .marca1, .botao1{
+    margin-bottom: 16px;
+
 }
 ul{
-    display: flex;
-    -ms-flex-direction: column;
-    flex-direction: column;
-    padding-left: 0;
-    margin-bottom: 0;
-
-    
+    padding-left: 10px;
 }
-li{
-    position: relative;
-    display: block;
-    padding: 10px 20px;
-    margin-bottom: 10px;
-    background-color:
-    #fff;
-    border: 1px solid
-    rgba(0,0,0,.125);
-    border-top-left-radius: .25rem;
-    border-top-right-radius: .25rem;
-    border-bottom-left-radius: .25rem;
-    border-bottom-right-radius: .25rem;
-    
+li.list{
+    list-style: none;
 }
-
+div.espaco{
+    width: 27px;
+    height: 30px;
+    background-color: #f8f9fa;
+}

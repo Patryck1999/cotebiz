@@ -31,8 +31,3 @@ class Email_fornecedorForm(forms.ModelForm):
     class Meta:
         model = Email_fornecedor
         fields = ['email']
-
-class Pedido_de_cotacaoForm(forms.ModelForm):
-    class Meta:
-        model = Pedido_de_cotacao
-        fields = ['pedido_de_cotacao', 'quantidade', 'produto', 'cliente', 'categoria'] 

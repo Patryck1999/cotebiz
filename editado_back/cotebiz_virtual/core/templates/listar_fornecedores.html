@@ -1,26 +1,54 @@
 {% extends "pagina-modelo.html" %}
 {% block content %}
-
 <div class="conteudo">
     <div class="container">
         <div class="row w-100">
-            <a  class="nav-link ml-4" href="/cadastrar_fornecedor/"><button type="button" class="btn btn-info">Cadastro de Fornecedor</button></a>
+            <a onclick="limpar_campos()" class="nav-link ml-4" href="/cadastrar_fornecedor/"><button type="button" class="btn btn-info">Cadastro de Fornecedor</button></a>
         </div>
     </div>
-    <h1 class="text-center "><u>Lista de Fornecedores</u></h1>
-    
+        
     <div class="container">
+        <h1 class="text-center "><u>Filtro de Pesquisa</u></h1>
+        <form method="GET" action="#">
+            <div class="form-row">
+              <div class="form-group  col-md-2 col-lg-2">
+                  <label for="fornecedor"><strong>Nome Fantasia</strong></label>
+                  <input type="text" class="form-control" id="fornecedor" name="fornecedor" placeholder="Fornecedor">  
+              </div>
+              
+              <div class="form-group col-md-4">
+                <label for="categoria"><strong>Categoria</strong></label>
+                <select id="categoria" name="categoria" class="form-control">
+                    <option value="">Selecione uma Categoria...</option>
+                    <option value="Material de Limpeza e Higiene">Material de Limpeza e Higiene</option> 
+                    <option value="Material de Copa">Material de Copa</option>
+                    <option value="Alimentos em Geral">Alimentos em Geral</option>
+                    <option value="Frutas e Verduras">Frutas e Verduras</option>
+                    <option value="Material de Escritório">Material de Escritório</option>
+                    <option value="Bebidas">Bebidas</option>
+                    <option value="Descartáveis e Embalagens">Descartáveis e Embalagens</option>
+                    <option value="Itens de Manutenção Básica">Itens de Manutenção Básica</option>
+                </select>
+              </div>
+              <div class="form-group col-md-2 col-lg-2">
+                <label for="cnpj"><strong>CNPJ</strong></label>
+                <input type="text" class="form-control" id="cnpj" name="cnpj" placeholder="CNPJ">
+            </div>
+              <button type="submit" class="btn btn-primary  mt-4 mb-3">Filtrar</button>
+              </div>
+      </form>
+      <h1 class="text-center "><u>Lista de Fornecedores</u></h1>
         <div class="row w-100">
-            <div class="col border bg-light" ><strong>FORNECEDOR</strong></div>
+            <div class="col border bg-light" ><strong>Nome Fantasia</strong></div>
             <div class="col border bg-light"><strong>CATEGORIA</strong></div>
             <div class="col border bg-light"><strong>CNPJ</strong></div>
         </div>
-    {% for fornecedor in fornecedores %}
+    {% for fornecedor in fornecedores_all %}
         <div class="container">
             <div class="row w-100">
-                <div class="col border-bottom-3 bg-light" ><a href="/fornecedor_detalhar/{{fornecedor.id}}">{{ fornecedor.fornecedor}}</a></div>
-                <div class="col border-bottom-0 bg-light" ><a href="/fornecedor_detalhar/{{fornecedor.id}}">{{ fornecedor.categoria}}</a></div>
-                <div class="col border-bottom-0 bg-light" ><a href="/fornecedor_detalhar/{{fornecedor.id}}">{{ fornecedor.cnpj}}</a></div>
+                <div class="col border-bottom-3 bg-light" ><a onclick="limpar_campos()" href="/fornecedor_detalhar/{{fornecedor.id}}">{{ fornecedor.fornecedor}}</a></div>
+                <div class="col border-bottom-0 bg-light" ><a onclick="limpar_campos()" href="/fornecedor_detalhar/{{fornecedor.id}}">{{ fornecedor.categoria}}</a></div>
+                <div class="col border-bottom-0 bg-light" ><a onclick="limpar_campos()" href="/fornecedor_detalhar/{{fornecedor.id}}">{{ fornecedor.cnpj}}</a></div>
             
             </div>
         </div>

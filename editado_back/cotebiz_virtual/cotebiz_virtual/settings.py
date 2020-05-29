@@ -37,7 +37,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'core'
+    'core',
+    'django_filters',
+    
 ]
 
 MIDDLEWARE = [
@@ -55,7 +57,7 @@ ROOT_URLCONF = 'cotebiz_virtual.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': ['templates'],#'DIRS': [os.path.join(BASE_DIR, 'templates')],
+        'DIRS': [BASE_DIR + '/templates/',],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -74,7 +76,7 @@ WSGI_APPLICATION = 'cotebiz_virtual.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
 
-DATABASES = {
+"""DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
@@ -84,7 +86,14 @@ DATABASES = {
         'HOST': 'localhost',
         'PORT': '5432',
     }
+    }"""
+
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
+}
 
 
 # Password validation
@@ -129,3 +138,10 @@ STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "static"),
     '/var/www/static/',
 ]
+#EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend' 
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST_USER = 'dpx3ope@gmail.com'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIT_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_HOST_PASSWORD = "faculdadeimpacta"

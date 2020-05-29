@@ -4,124 +4,156 @@ var idItems2 = document.getElementById("marca");
 var idItems3 = document.getElementById("unidade-medida");
 var idItems4 = document.getElementById("valor-base");
 var idItems5 = document.getElementById("dynamic-list");
-
-addBtn.addEventListener('click', function(){
-	addClick();
-	contador++;
-});
-
-function addItemLength() {
-	return candidate.value.length;
-
-}
-
-var contador = 1;
-	
+var contador = 2;
 
 function addItem() {
-
-	let li1 = document.createElement("li");
-	li1.classList.add('col-md-12');
-	li1.style.listStyle = "none";
-
-	let div = document.getElementById("dynamic-list");
-	var candidate = document.getElementById("candidate");
-	var p = document.createElement("p");
-	p.classList.add('form-control', 'col-md-12');
-	p.setAttribute('id', candidate.value+'_'+contador);
-	p.appendChild(document.createTextNode(candidate.value));
-	div.appendChild(li1);
-	li1.appendChild(p);
-
-	//Cria input para a coluna de Valor Base
+	//cria a lista com a classe e o estilo
+	let item_list_produto = document.createElement("li");
+	item_list_produto.classList.add('col-md-12');
+	item_list_produto.style.listStyle = "none";
 	
-	let li2 = document.createElement("li");
-	li2.style.listStyle = "none";
+	//Cria a lista e o input e Acrescenta o input de produto na lista como um item dela e altera seu estilo
+	let produto_list = document.getElementById("produto_list");
+	var produtoInput = document.createElement("input");
+	produtoInput.classList.add('form-control', 'col-md-12');
+	produtoInput.setAttribute('name', 'produto' + contador);
+	produtoInput.style.marginBottom = "16px";
+	produto_list.appendChild(item_list_produto);
+	item_list_produto.appendChild(produtoInput);
 
-	let categoriaId = document.getElementById("categoria");
+	//cria a lista com a classe e o estilo
+	let item_list_categoria = document.createElement("li");
+	item_list_categoria.classList.add('col-md-12');
+	item_list_categoria.style.listStyle = "none";
+
+	//Cria a lista e o input e Acrescenta o input de categoria na lista como um item dela e altera seu estilo
+	let categoria_list = document.getElementById("categoria_list");
 	let categoriaInput = document.createElement("input");
-	categoriaInput.setAttribute('id', 'categoria' + contador);
+	categoriaInput.setAttribute('name', 'categoria' + contador);
 	categoriaInput.style.marginBottom = "16px";
 	categoriaInput.classList.add('form-control', 'col-md-12');
-	categoriaId.appendChild(li2);
-	li2.appendChild(categoriaInput);
+	categoria_list.appendChild(item_list_categoria);
+	item_list_categoria.appendChild(categoriaInput);
 
 
-	//Cria input para a coluna de Valor Base
+	//cria a lista com a classe e o estilo
 
-	let li3 = document.createElement("li");
-	li3.style.listStyle = "none";
+	let item_list_valor_base = document.createElement("li");
+	item_list_valor_base.classList.add('col-md-12');
+	item_list_valor_base.style.listStyle = "none";
 
-	let vl = document.getElementById("valor-base");
-	let valorbase = document.createElement("input");
-	valorbase.setAttribute('id', 'valorbase' + contador);
-	valorbase.style.marginBottom = "16px";
-	valorbase.classList.add('form-control', 'col-md-12');
-	vl.appendChild(li3);
-	li3.appendChild(valorbase);
+	//Cria a lista e o input e Acrescenta o input de valor base na lista como um item dela e altera seu estilo
+	let valor_base_list = document.getElementById("valor_base_list");
+	let valor_baseInput = document.createElement("input");
+	valor_baseInput.setAttribute('name', 'valor_base' + contador);
+	valor_baseInput.style.marginBottom = "16px";
+	valor_baseInput.classList.add('form-control', 'col-md-12');
+	valor_base_list.appendChild(item_list_valor_base);
+	item_list_valor_base.appendChild(valor_baseInput);
 
-	//Cria input para a coluna de Unidade Medida
+	//cria a lista com a classe e o estilo
+	let item_list_unidade_medida = document.createElement("li");
+	item_list_unidade_medida.classList.add('col-md-12');
+	item_list_unidade_medida.style.listStyle = "none";
 
-	let li4 = document.createElement("li");
-	li4.style.listStyle = "none";
+	//Cria a lista e o input e Acrescenta o input de unidade de medida na lista como um item dela e altera seu estilo
+	let unidade_medida_list = document.getElementById("unidade_medida_list");
+	let unidademedidaInput = document.createElement("input");
+	unidademedidaInput.setAttribute('name', 'unidade_medida' + contador);
+	unidademedidaInput.style.marginBottom = "16px";
+	unidademedidaInput.classList.add('form-control', 'col-md-12');
+	unidade_medida_list.appendChild(item_list_unidade_medida);
+	item_list_unidade_medida.appendChild(unidademedidaInput);
 
-	let um = document.getElementById("unidade-medida");
-	let unidademedida = document.createElement("input");
-	unidademedida.setAttribute('id', 'nome' + contador);
-	unidademedida.style.marginBottom = "16px";
-	unidademedida.classList.add('form-control', 'col-md-12');
-	um.appendChild(li4);
-	li4.appendChild(unidademedida);
+	//cria a lista com a classe e o estilo
+	let item_list_quantidade = document.createElement("li");
+	item_list_quantidade.classList.add('col-md-12');
+	item_list_quantidade.style.listStyle = "none";
 
-	//Cria input para a coluna de Marca
+	//Cria a lista e o input e Acrescenta o input de quantidade na lista como um item dela e altera seu estilo
+	let quantidade_list = document.getElementById("quantidade_list");
+	let qtdInput = document.createElement("input");
+	qtdInput.setAttribute('name', 'quantidade' + contador);
+	qtdInput.style.marginBottom = "16px";
+	qtdInput.classList.add('form-control', 'col-md-12');
+	quantidade_list.appendChild(item_list_quantidade);
+	item_list_quantidade.appendChild(qtdInput);
 
-	let li5 = document.createElement("li");
-	li5.style.listStyle = "none";
+	//cria a lista com a classe e o estilo
+	let item_list_marca = document.createElement("li");
+	item_list_marca.classList.add('col-md-12');
+	item_list_marca.style.listStyle = "none";
 
-	let ma = document.getElementById("marca");
-	let marca = document.createElement("input");
-	marca.setAttribute('id', 'marca' + contador);
-	marca.style.marginBottom = "16px";
-	marca.classList.add('form-control', 'col-md-12');
-	ma.appendChild(li5);
-	li5.appendChild(marca);
+	//Cria a lista e o input e Acrescenta o input de marca na lista como um item dela e altera seu estilo
+	let marca_list = document.getElementById("marca_list");
+	let marcaInput = document.createElement("input");
+	marcaInput.setAttribute('name', 'marcaInput' + contador);
+	marcaInput.style.marginBottom = "16px";
+	marcaInput.classList.add('form-control', 'col-md-12');
+	marca_list.appendChild(item_list_marca);
+	item_list_marca.appendChild(marcaInput);
 
-	//Cria input para a coluna de Marca
+	//cria a lista com a classe e o estilo
+	let item_list_excluir = document.createElement("li");
+	item_list_excluir.classList.add('col-md-12');
+	item_list_excluir.style.listStyle = "none";
 
-	let li6 = document.createElement("li");
-	li6.style.listStyle = "none";
-	li6.setAttribute('id', 'ex'+contador);
-	let ixi = document.getElementsByTagName("li")[0];
-
-	let btn = document.getElementById("excluir");
+	//Cria a lista e o botao e Acrescenta o botao de exluir na lista como um item dela e altera seu estilo inicia o botao quando ele for clicado
+	let excluir_list = document.getElementById("excluir_list");
 	var btnDel = document.createElement("button");
-	btnDel.setAttribute('id', 'botao' + contador);
+	btnDel.setAttribute('name', 'botao' + contador);
 	btnDel.classList.add('btn', 'btn-danger');
+	btnDel.classList.add('form-control', 'col-md-7');
 	btnDel.style.marginBottom = "16px";
 	btnDel.appendChild(document.createTextNode("X"));
-	btn.appendChild(li6);
-	li6.appendChild(btnDel);
+	excluir_list.appendChild(item_list_excluir);
+	item_list_excluir.appendChild(btnDel);
 	btnDel.addEventListener("click", deleteListItem);
 
-	candidate.value = "";
-	
+	//remove o item da lista
 	function deleteListItem() {
-		btn.parent.removeChild(ixi);
-	}
-	
-	
-}
-
-
-function addClick() {
-	if(addItemLength() > 0) {
-	  addItem();
+		item_list_produto.remove();
+		item_list_categoria.remove();
+		item_list_valor_base.remove();
+		item_list_unidade_medida.remove();
+		item_list_quantidade.remove();
+		item_list_marca.remove();
+		item_list_excluir.remove();
 	}
 }
-  
-  // On keypress enter
-/*function addKey(event) {
-	if(addItemLength() > 0 && event.keyCode == 13) {
+
+//pega o valor comprimento total ou seja a quantidade de palavras contidas no campo
+function comprimento_do_campo_produto() {
+	return produto1.value.length;
+}
+
+function comprimento_do_campo_categoria() {
+	return categoria1.value.length;
+}
+
+function comprimento_do_campo_valor_base() {
+	return valor_base1.value.length;
+}
+
+function comprimento_do_campo_unidade_medida() {
+	return unidade_medida1.value.length;
+}
+
+function comprimento_do_campo_quantidade() {
+	return quantidade1.value.length;
+}
+
+function comprimento_do_campo_marca() {
+	return marca1.value.length;
+}
+
+// Adiciona o que tiver na função add item de acordo com a condição ao clicar no botao
+addBtn.addEventListener('click', function(){
+	if((comprimento_do_campo_produto() > 0) && (comprimento_do_campo_categoria() > 0)
+	 && (comprimento_do_campo_valor_base() > 0) && (comprimento_do_campo_unidade_medida() > 0) 
+	 && (comprimento_do_campo_quantidade() > 0) && (comprimento_do_campo_marca() > 0) 
+	 &&  (contador <= 20)){
 		addItem();
-	}
-}*/
+		contador++;
+	  }
+});
