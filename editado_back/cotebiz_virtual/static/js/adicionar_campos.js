@@ -6,6 +6,7 @@ var idItems4 = document.getElementById("valor-base");
 var idItems5 = document.getElementById("dynamic-list");
 var contador = 2;
 
+
 function addItem() {
 	//cria a lista com a classe e o estilo
 	let item_list_produto = document.createElement("li");
@@ -87,7 +88,7 @@ function addItem() {
 	//Cria a lista e o input e Acrescenta o input de marca na lista como um item dela e altera seu estilo
 	let marca_list = document.getElementById("marca_list");
 	let marcaInput = document.createElement("input");
-	marcaInput.setAttribute('name', 'marcaInput' + contador);
+	marcaInput.setAttribute('name', 'marca' + contador);
 	marcaInput.style.marginBottom = "16px";
 	marcaInput.classList.add('form-control', 'col-md-12');
 	marca_list.appendChild(item_list_marca);
@@ -120,6 +121,8 @@ function addItem() {
 		item_list_marca.remove();
 		item_list_excluir.remove();
 	}
+
+
 }
 
 //pega o valor comprimento total ou seja a quantidade de palavras contidas no campo
@@ -157,3 +160,26 @@ addBtn.addEventListener('click', function(){
 		contador++;
 	  }
 });
+
+/*
+<select id="mySelect" size="8">
+</select>
+var cidades = ['Material de Limpeza e Higiene',
+			   'Material de Copa',
+			   'Alimentos em Geral',
+			   'Frutas e Verduras',
+			   'Material de Escritório',
+			   'Bebidas',
+			   'Descartáveis e Embalagens',
+			'Itens de Manutenção Básica'];
+
+
+cidades.forEach(function(item){
+	addOption(item)
+});
+
+function addOption(valor) {
+	var option = new Option(valor, valor);
+	var select = document.getElementById("mySelect");
+	select.add(option);
+}*/

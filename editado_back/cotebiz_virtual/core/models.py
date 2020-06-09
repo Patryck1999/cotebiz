@@ -115,6 +115,7 @@ class Cliente(models.Model):
      
 class Pedido_de_cotacao(models.Model):
     data_agora = models.DateTimeField()
+    n_pedido = models.CharField('Numero do pedido', max_length=10, null=True, blank=True)
     nome = models.CharField('Nome Fantasia', max_length=40)
     razao_social = models.CharField('Razão Social', max_length=80)
     cnpj = models.CharField('CNPJ', max_length=18)
@@ -126,8 +127,8 @@ class Pedido_de_cotacao(models.Model):
     numero = models.CharField('Número', max_length=10)
     telefone = models.CharField('Telefone', max_length=16)
     celular = models.CharField('Celular', max_length=17)
-    email = models.CharField('Email', max_length=150)
-
+    email = models.EmailField('Email', max_length=150)
+    n_leilao = models.CharField('Numero do leilão', max_length=10, null=True, blank=True)
     produto1 = models.CharField('Produto 1', max_length=25)
     categoria1 = models.CharField('Categoria 1', max_length=100)
     valor_base1 = models.CharField('Valor Base 1', max_length=9)
@@ -296,6 +297,38 @@ class Pedido_de_cotacao(models.Model):
 
     def __str__(self):
         return str(self.nome)   
+
+class Pedido_de_cotacao_fornecedor(models.Model):
+    fornecedor = models.CharField('Fornecedor', max_length=30)
+    observacao_1 = models.TextField('Observação1', null=True, blank=True)
+    observacao_2 = models.TextField('Observação2', null=True, blank=True)
+    observacao_3 = models.TextField('Observação3', null=True, blank=True)
+    observacao_4 = models.TextField('Observação4', null=True, blank=True)
+    observacao_5 = models.TextField('Observação5', null=True, blank=True)
+    observacao_6 = models.TextField('Observação6', null=True, blank=True)
+    observacao_7 = models.TextField('Observação7', null=True, blank=True)
+    observacao_8 = models.TextField('Observação8', null=True, blank=True)
+    observacao_9 = models.TextField('Observação9', null=True, blank=True)
+    observacao_10 = models.TextField('Observação10', null=True, blank=True)
+    observacao_11 = models.TextField('Observação11', null=True, blank=True)
+    observacao_12 = models.TextField('Observação12', null=True, blank=True)
+    observacao_13 = models.TextField('Observação13', null=True, blank=True)
+    observacao_14 = models.TextField('Observação14', null=True, blank=True)
+    observacao_15 = models.TextField('Observação15', null=True, blank=True)
+    observacao_16 = models.TextField('Observação16', null=True, blank=True)
+    observacao_17 = models.TextField('Observação17', null=True, blank=True)
+    observacao_18 = models.TextField('Observação18', null=True, blank=True)
+    observacao_19 = models.TextField('Observação19', null=True, blank=True)
+    observacao_20 = models.TextField('Observação20', null=True, blank=True)
+
+
+    class Meta:
+        verbose_name ='Pedido_de_cotacao_fornecedor'
+        verbose_name_plural ='Pedido_de_cotacao_fornecedores'
+
+
+    def __str__(self):
+        return str(self.observacao_1)   
 
     
 class Sala_de_leilao(models.Model):

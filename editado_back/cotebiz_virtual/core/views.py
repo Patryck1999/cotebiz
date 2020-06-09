@@ -8,45 +8,6 @@ from .forms import *
 from django.views.generic import View
 from django.core.mail import send_mail
 
-def envio_de_email_fornecedor(request):
-    assunto = 'Nova cotação disponivel - Cotebiz'
-    email = request.POST.get('email')
-    corpo_da_mensagem = request.POST.get('mensagem')
-    envio_email = Email_fornecedor.objects.all()
-    context={
-        'envio_email':envio_email
-    }
-
-    send_mail(
-        assunto, #name
-        corpo_da_mensagem, # messagem
-        'dpx3ope@gmail.com',
-        email, # email principal
-
-    )
-    return render(request, 'email_fornecedor.html', context)
-
-
-@login_required(login_url='/login_user/')
-def leilao(request):
-    if str(request.user) == 'admin':
-        p = Pedido_de_cotacao.objects.all()
-        pedido_query = request.GET.get('pedido')
-        nome_query = request.GET.get('nome')
-            
-        if pedido_query != '' and pedido_query is not None:
-            p = p.filter(id=pedido_query)
-
-        if nome_query != '' and nome_query is not None:
-            p = p.filter(nome__icontains=nome_query)
-
-
-        context={
-            'p': p
-        }
-
-        return render(request, "leilao.html", context)
-
 def login_user(request):
     return render(request, 'login.html')
     
@@ -74,29 +35,35 @@ def home(request):
     return render(request, 'index.html')
 
 @login_required(login_url='/login_user/')
-def listar_fornecedores(request):
-    if str(request.user) == 'admin':
-        fornecedores_all = Fornecedor.objects.all()
-        fornecedor_query = request.GET.get('fornecedor')
-        cnpj_query = request.GET.get('cnpj')
-        categoria_query = request.GET.get('categoria')
+def envio_de_email_fornecedor(request):
+    pedido = Pedido_de_cotacao.objects.all()
+    context={
+        'pedido':pedido
+    }
+    return render(request, 'email_fornecedor.html', context)
 
-        if fornecedor_query != '' and fornecedor_query is not None:
-            fornecedores_all = fornecedores_all.filter(fornecedor__icontains=fornecedor_query)
+class SendFormEmail(View):
 
-        if cnpj_query != '' and cnpj_query is not None:
-            fornecedores_all = fornecedores_all.filter(cnpj__icontains=cnpj_query)
+    def get(self, request):
 
-        if categoria_query != '' and categoria_query is not None:
-            fornecedores_all = fornecedores_all.filter(categoria__icontains=categoria_query)
+        # Get the form data 
+        email = request.GET.get('email', None)
+        name="Olá nós da COTEBIZ, temos uma nova cotação para você parceiro entre em nossa plataforma!"
+        emails=[]
+        message = request.GET.get('mensagem', None)
+        for e in email.split(','):
+            emails.append(e.strip())
+        print(emails)
+        # Send Email
+        send_mail(
+            'Nova cotação disponivel - Cotebiz', 
+            name + "\n" + message, 
+            'sender@example.com', # Admin
+                emails,
+        ) 
 
-        context={
-            'fornecedores_all': fornecedores_all
-        }
-
-        return render(request, "listar_fornecedores.html", context) 
-    else:
-        return redirect('/')
+        # Redirect to same page after form submit
+        return redirect('home') 
 
 @login_required(login_url='/login_user/')
 def cadastrar_fornecedor(request):
@@ -113,52 +80,13 @@ def cadastrar_fornecedor(request):
             else:
                 messages.error(request, 'Erro ao cadastrar Fornecedor! Fornecedor já está cadastrado!')
         return render(request, 'cadastrar_fornecedor.html', context)
-      
-@login_required(login_url='/login_user/')
-def atualizar_fornecedor(request, id):
-    if str(request.user) == 'admin':
-
-        fornecedor = Fornecedor.objects.get(id=id)
-        form = FornecedorForm(request.POST or None, instance= fornecedor)
-        context = {
-            'form': form,
-            'fornecedor': fornecedor
-        }
-        if (request.method)== 'POST':
-            if form.is_valid():
-                form.save()
-                return redirect('listar_fornecedores')
-            else:
-                messages.error(request, 'Erro ao Atualizar Fornecedor! Fornecedor já está cadastrado!')
-        return render(request, 'atualizar_fornecedor.html', context)
-    
-
-@login_required(login_url='/login_user/')
-def fornecedor_detalhar(request, id):
-    if str(request.user) == 'admin':
-        fornecedor = Fornecedor.objects.get(id=id)
-        context = {
-            'fornecedor':fornecedor
-        }
-        return render(request, 'detalhar_fornecedor.html', context)
-    else:
-        return redirect('/')
-
-
-
-@login_required(login_url='/login_user/')
-def delete_fornecedor(request, id):
-    if str(request.user) == 'admin':
-        fornecedor = Fornecedor.objects.get(id=id)
-        fornecedor.delete()
-        return redirect('listar_fornecedores')
-    else:
-        return redirect('/')
-
 
 @login_required(login_url='/login_user/')
 def adicionar_pedido(request):
-    return render(request, 'pedido.html')
+    if str(request.user) == 'admin':
+        return render(request, 'criar_pedido.html')
+    else:
+        return redirect('/')
         
 @login_required(login_url='/login_user/')
 def adicionar_pedido_submit(request):
@@ -368,5 +296,193 @@ def adicionar_email_fornecedor(request):
             form.save()
             return redirect('cadastrar_fornecedor')
         return render(request, 'adicionar_email_fornecedor.html', context)
+    else:
+        return redirect('/')
+
+@login_required(login_url='/login_user/')
+def listar_fornecedores(request):
+    if str(request.user) == 'admin':
+        fornecedores_all = Fornecedor.objects.all()
+        fornecedor_query = request.GET.get('fornecedor')
+        cnpj_query = request.GET.get('cnpj')
+        categoria_query = request.GET.get('categoria')
+
+        if fornecedor_query != '' and fornecedor_query is not None:
+            fornecedores_all = fornecedores_all.filter(fornecedor__icontains=fornecedor_query)
+
+        if cnpj_query != '' and cnpj_query is not None:
+            fornecedores_all = fornecedores_all.filter(cnpj__icontains=cnpj_query)
+
+        if categoria_query != '' and categoria_query is not None:
+            fornecedores_all = fornecedores_all.filter(categoria__icontains=categoria_query)
+
+        context={
+            'fornecedores_all': fornecedores_all
+        }
+
+        return render(request, "listar_fornecedores.html", context) 
+    else:
+        return redirect('/')
+
+@login_required(login_url='/login_user/')
+def listar_produtos_cotados(request):
+    if str(request.user) == 'admin':
+        produtos_cotados = Pedido_de_cotacao_fornecedor.objects.all()
+        context = {
+            'produtos_cotados':produtos_cotados
+        }
+        return render(request, 'listar_produtos_cotados.html', context)
+    else:
+        return redirect('/')
+
+def lista_de_pedidos(request):
+    if str(request.user) == 'admin':
+        pedido = Pedido_de_cotacao.objects.all()
+        n_pedido_query = request.GET.get('numero_do_pedido')
+        razao_social_query = request.GET.get('razao_social')
+        cnpj_query = request.GET.get('id_cnpj')
+            
+        if n_pedido_query != '' and n_pedido_query is not None:
+            pedido = pedido.filter(id=n_pedido_query)
+
+        if razao_social_query != '' and razao_social_query is not None:
+            pedido = pedido.filter(razao_social__icontains=razao_social_query)
+
+        if cnpj_query != '' and cnpj_query is not None:
+            pedido = pedido.filter(cnpj__icontains=cnpj_query)
+
+        context={
+            'pedido': pedido
+        }
+
+        return render(request, "lista_de_pedidos.html", context)
+    else:
+        return redirect('/')
+
+@login_required(login_url='/login_user/')
+def lista_de_sala_de_leilao(request):
+    if str(request.user) == 'admin':
+        pedido = Pedido_de_cotacao.objects.all()
+        n_pedido_query = request.GET.get('n_pedido')
+        nome_query = request.GET.get('nome')
+            
+        if n_pedido_query != '' and n_pedido_query is not None:
+            pedido = pedido.filter(id=n_pedido_query)
+
+        if nome_query != '' and nome_query is not None:
+            pedido = pedido.filter(nome__icontains=nome_query)
+
+
+        context={
+            'pedido': pedido
+        }
+
+        return render(request, "lista_de_sala_de_leilao.html", context)
+    else:
+        return redirect('/')
+
+@login_required(login_url='/login_user/')
+def detalhar_fornecedor(request, id):
+    if str(request.user) == 'admin':
+        fornecedor = Fornecedor.objects.get(id=id)
+        context = {
+            'fornecedor':fornecedor
+        }
+        return render(request, 'detalhar_fornecedor.html', context)
+    else:
+        return redirect('/')
+
+def detalhar_pedido(request, id):
+    if str(request.user) == 'admin':
+        pedido = Pedido_de_cotacao.objects.get(id=id)
+        context = {
+            'pedido':pedido
+        }
+        return render(request, 'detalhar_pedidos.html', context)
+    else:
+        return redirect('/')
+
+@login_required(login_url='/login_user/')
+def detalhar_pedido_da_sala_de_leilao(request, id):
+    if str(request.user) == 'admin':
+        pedido = Pedido_de_cotacao.objects.get(id=id)
+        context = {
+            'pedido':pedido
+        }
+        return render(request, 'detalhar_pedido_da_sala_de_leilao.html', context)
+    else:
+        return redirect('/')
+
+@login_required(login_url='/login_user/')
+def detalhar_pedido_da_sala_de_leilao_submit(request, id):
+    fornecedor = request.POST.get('fornecedor')
+    observacao1 = request.POST.get('observacao_1')
+    observacao2 = request.POST.get('observacao_2')
+    observacao3 = request.POST.get('observacao_3')
+    observacao4 = request.POST.get('observacao_4')
+    observacao5 = request.POST.get('observacao_5')
+    observacao6 = request.POST.get('observacao_6')
+    observacao7 = request.POST.get('observacao_7')
+    observacao8 = request.POST.get('observacao_8')
+    observacao9 = request.POST.get('observacao_9')
+    observacao10 = request.POST.get('observacao_10')
+    observacao11 = request.POST.get('observacao_11')
+    observacao12 = request.POST.get('observacao_12')
+    observacao13 = request.POST.get('observacao_13')
+    observacao14 = request.POST.get('observacao_14')
+    observacao15 = request.POST.get('observacao_15')
+    observacao16 = request.POST.get('observacao_16')
+    observacao17 = request.POST.get('observacao_17')
+    observacao18 = request.POST.get('observacao_18')
+    observacao19 = request.POST.get('observacao_19')
+    observacao20 = request.POST.get('observacao_20')
+    pedido_de_cotacao_fornecedor = Pedido_de_cotacao_fornecedor.objects.create(fornecedor=fornecedor ,observacao_1=observacao1, 
+    observacao_2=observacao2, observacao_3=observacao3, observacao_4=observacao4, observacao_5=observacao5,
+    observacao_6=observacao6, observacao_7=observacao7, observacao_8=observacao8, observacao_9=observacao9,
+    observacao_10=observacao10, observacao_11=observacao11, observacao_12=observacao12, observacao_13=observacao13,
+    observacao_14=observacao14, observacao_15=observacao15, observacao_16=observacao16, observacao_17=observacao17,
+    observacao_18=observacao18, observacao_19=observacao19, observacao_20=observacao20)
+    return redirect('/')
+
+@login_required(login_url='/login_user/')
+def atualizar_fornecedor(request, id):
+    if str(request.user) == 'admin':
+
+        fornecedor = Fornecedor.objects.get(id=id)
+        form = FornecedorForm(request.POST or None, instance= fornecedor)
+        context = {
+            'form': form,
+            'fornecedor': fornecedor
+        }
+        if (request.method)== 'POST':
+            if form.is_valid():
+                form.save()
+                return redirect('listar_fornecedores')
+            else:
+                messages.error(request, 'Erro ao Atualizar Fornecedor! Fornecedor já está cadastrado!')
+        return render(request, 'atualizar_fornecedor.html', context)
+
+@login_required(login_url='/login_user/')        
+def atualizar_pedido(request, id):
+    if str(request.user) == 'admin':
+        fornecedor = Fornecedor.objects.get(id=id)
+        context = {
+            'form': form,
+            'fornecedor': fornecedor
+        }
+        if (request.method)== 'POST':
+            if form.is_valid():
+                form.save()
+                return redirect('listar_fornecedores')
+            else:
+                messages.error(request, 'Erro ao Atualizar Fornecedor! Fornecedor já está cadastrado!')
+        return render(request, 'atualizar_fornecedor.html', context)   
+
+@login_required(login_url='/login_user/')
+def delete_fornecedor(request, id):
+    if str(request.user) == 'admin':
+        fornecedor = Fornecedor.objects.get(id=id)
+        fornecedor.delete()
+        return redirect('listar_fornecedores')
     else:
         return redirect('/')

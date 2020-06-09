@@ -46,9 +46,9 @@
     {% for fornecedor in fornecedores_all %}
         <div class="container">
             <div class="row w-100">
-                <div class="col border-bottom-3 bg-light" ><a onclick="limpar_campos()" href="/fornecedor_detalhar/{{fornecedor.id}}">{{ fornecedor.fornecedor}}</a></div>
-                <div class="col border-bottom-0 bg-light" ><a onclick="limpar_campos()" href="/fornecedor_detalhar/{{fornecedor.id}}">{{ fornecedor.categoria}}</a></div>
-                <div class="col border-bottom-0 bg-light" ><a onclick="limpar_campos()" href="/fornecedor_detalhar/{{fornecedor.id}}">{{ fornecedor.cnpj}}</a></div>
+                <div class="col border-bottom-3 bg-light" ><a onclick="limpar_campos()" href="/detalhar_fornecedor/{{fornecedor.id}}">{{ fornecedor.fornecedor}}</a></div>
+                <div class="col border-bottom-0 bg-light" ><a onclick="limpar_campos()" href="/detalhar_fornecedor/{{fornecedor.id}}">{{ fornecedor.categoria}}</a></div>
+                <div class="col border-bottom-0 bg-light" ><a onclick="limpar_campos()" href="/detalhar_fornecedor/{{fornecedor.id}}">{{ fornecedor.cnpj}}</a></div>
             
             </div>
         </div>

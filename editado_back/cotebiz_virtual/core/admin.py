@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Fornecedor, Categoria, Email_fornecedor, Email_fornecedor_envio, Cliente, Email_cliente, Produto, Pedido_de_cotacao
+from .models import Fornecedor, Categoria, Email_fornecedor, Email_fornecedor_envio, Cliente, Email_cliente, Produto, Pedido_de_cotacao,Pedido_de_cotacao_fornecedor
 # Register your models here.
 @admin.register(Fornecedor)
 class Fornecedoradmin(admin.ModelAdmin):
@@ -30,5 +30,9 @@ class Produtoadmin(admin.ModelAdmin):
 
 @admin.register(Pedido_de_cotacao)
 class Pedido_de_cotacaoadmin(admin.ModelAdmin):
-     list_display = ['nome', 'razao_social', 'cnpj', 'plano', 'cep','rua', 'bairro', 'cidade',
+     list_display = ['id', 'nome', 'razao_social', 'cnpj', 'plano', 'cep','rua', 'bairro', 'cidade',
       'numero', 'telefone', 'celular']
+
+@admin.register(Pedido_de_cotacao_fornecedor)
+class Pedido_de_cotacaoadmin(admin.ModelAdmin):
+     list_display = ['id', 'observacao_1']

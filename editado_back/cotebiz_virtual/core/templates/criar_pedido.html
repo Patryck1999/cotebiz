@@ -9,7 +9,7 @@
         <div class="form-row">
             <div class="form-group col-md-2">
               <label for="nome">Data de Cadastro</label>
-              <input type="date" class="form-control" name="data" required>
+              <input type="date" class="form-control" name="data" autofocus required>
             </div>
           </div>
         <div class="form-row">
@@ -24,8 +24,8 @@
                 <input type="text" class="form-control" name="razao_social" required>
             </div>
             <div class="form-group col-md-4">
-                <label for="cnpj">CNPJ</label>
-                <input type="text" class="form-control" name="cnpj" required>
+                <label for="id_cnpj">CNPJ</label>
+                <input type="text" class="form-control" name="cnpj" id="id_cnpj" required>
             </div>
             <div class="form-group col-md-3">
                 <label for="plano">Tipo do Plano</label>
@@ -40,22 +40,22 @@
         <hr>
         <div class="form-row">
             <div class="form-group col-md-6">
-                <label for="cep">CEP</label>
-                <input type="text" class="form-control" name="cep" placeholder="16540 321" required>
+                <label for="id_cnpj">CEP</label>
+                <input type="text" class="form-control" name="cep" id="id_cep" required>
             </div>
             <div class="form-group col-md-6">
-                <label for="rua">Rua</label>
-                <input type="text" class="form-control" name="rua" required>
+                <label for="id_rua">Rua</label>
+                <input type="text" class="form-control" name="rua" id="id_rua" required>
             </div>
         </div>
         <div class="form-row">
             <div class="form-group col-md-5">
                 <label for="bairro">Bairro</label>
-                <input type="text" class="form-control" name="bairro" required>
+                <input type="text" class="form-control" name="bairro" id="id_bairro" required>
             </div>
             <div class="form-group col-md-5">
                 <label for="cidade">Cidade</label>
-                <input type="text" class="form-control" name="cidade" required>
+                <input type="text" class="form-control" name="cidade" id="id_cidade" required>
             </div>
             <div class="form-group col-md-2">
                 <label for="numero">Nº</label>
@@ -66,15 +66,15 @@
         <div class="form-row">
             <div class="form-group col-md-2">
                 <label for="telefone">Telefone</label>
-                <input type="text" class="form-control" name="telefone" required>
+                <input type="text" class="form-control" name="telefone" id="id_telefone">
             </div>
             <div class="form-group col-md-3">
                 <label for="celular">Celular</label>
-                <input type="text" class="form-control" name="celular" required>
+                <input type="text" class="form-control" name="celular" id="id_celular">
             </div>
             <div class="form-group col-md-7">
                 <label for="email">Email</label>
-                <input type="text" class="form-control" name="email" required>
+                <input type="email" class="form-control" name="email" required>
             </div>
         </div>
         
@@ -87,7 +87,7 @@
                 </div>
             {% endfor %}
         </div>
-          
+
         <hr>
         <div align="center" class="form-row bg-light" >
             <div class="form-group col-md-2">
@@ -100,34 +100,34 @@
             <div class="space form-group col-md-2">
                 <label for="id_categoria"><strong>Categoria</strong></label>
                 <ul class="remove form-row categoria"  id="categoria_list">
-                    <input class="categoria1 form-control col-md-12" type="text" name="categoria1" id="categoria1" required>
+                    <li class="list col-md-12"><input class="categoria1 form-control col-md-12" type="text" name="categoria1" id="categoria1" required></li>
 
                 </ul>
             </div>
             <div class="space form-group col-md-2"  id="valor">
                 <label for="id_valor_base"><strong>Valor Base</strong></label>
                 <ul class="remove form-row valor-base"  id="valor_base_list">
-                    <input class="valor_base1 form-control col-md-12" type="text" name="valor_base1" id="valor_base1" required>
+                    <li class="list col-md-12"><input class="valor_base1 form-control col-md-12" type="text" name="valor_base1" id="valor_base1" required></li>
                 </ul>
             </div>
             <div class="space form-group col-md-2"  >
                 <label for="id_unidade_de_medida"><strong>Unidade</strong></label>
                 <ul class="remove form-row unidade-medida" id="unidade_medida_list">
-                    <input class="unidade_medida1 form-control col-md-12" type="text" name="unidade_medida1" id="unidade_medida1" required>
+                    <li class="list col-md-12"><input class="unidade_medida1 form-control col-md-12" type="text" name="unidade_medida1" id="unidade_medida1" required></li>
 
                 </ul>
             </div>
             <div class="space form-group col-md-1"  >
                 <label for="id_quantidade"><strong>Qtd</strong></label>
                 <ul class="remove form-row quantidade" id="quantidade_list">
-                    <input class="quantidade1 form-control col-md-12" type="text" name="quantidade1" id="quantidade1" required>
+                    <li class="list col-md-12"><input class="quantidade1 form-control col-md-12" type="text" name="quantidade1" id="quantidade1" required></li>
 
                 </ul>
             </div>
             <div class="space form-group col-md-2"  >
                 <label for="id_marca"><strong>Marca</strong></label>
                 <ul class="remove form-row marca" id="marca_list">
-                    <input class="marca1 form-control col-md-12" type="text" name="marca1" id="marca1" required>
+                    <li class="list col-md-12"><input class="marca1 form-control col-md-12" type="text" name="marca1" id="marca1" required></li>
 
                 </ul>
             </div>

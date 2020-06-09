@@ -1,0 +1,746 @@
+{% extends "pagina-modelo.html" %}
+{% block content %}
+{% block style %}
+<link rel="stylesheet" type="text/css" href="/static/css/sala_de_cotacao.css" >
+{% endblock %}
+<form action="submit" method="POST">{% csrf_token %}
+<div class="container-fluid">
+    <div class="row">
+      <div class="col-2">
+          <div class="container titulo">
+              <span>Produtos</span>
+          </div>
+        <div class="list-group" id="list-tab" role="tablist">
+          <a class="list-group-item list-group-item-action retirar active" id="list-produto1" data-toggle="list" href="#list-description1" role="tab" aria-controls="home">
+              <ul>
+                  <li>{{ pedido.produto1 }}</li>
+              </ul>
+          </a>
+          <a class="list-group-item list-group-item-action retirar" id="list-produto2" data-toggle="list" href="#list-description2" role="tab" aria-controls="profile">
+            <ul>
+                <li>{{ pedido.produto2 }}</li>
+            </ul>
+          </a>
+          <a class="list-group-item list-group-item-action retirar" id="list-produto3" data-toggle="list" href="#list-description3" role="tab" aria-controls="messages">
+            <ul>
+                <li>{{ pedido.produto3 }}</li>
+            </ul>
+          </a>
+          <a class="list-group-item list-group-item-action retirar" id="list-produto4" data-toggle="list" href="#list-description4" role="tab" aria-controls="settings">
+            <ul>
+                <li>{{ pedido.produto4 }}</li>
+            </ul>
+            </a>
+          <a class="list-group-item list-group-item-action retirar" id="list-produto5" data-toggle="list" href="#list-description5" role="tab" aria-controls="opcao">
+            <ul>
+                <li>{{ pedido.produto5 }}</li>
+            </ul>
+          </a>
+          <a class="list-group-item list-group-item-action retirar" id="list-produto6" data-toggle="list" href="#list-description6" role="tab" aria-controls="group">
+            <ul>
+                <li>{{ pedido.produto6 }}</li>
+            </ul>
+          </a>
+          <a class="list-group-item list-group-item-action retirar" id="list-produto7" data-toggle="list" href="#list-description7" role="tab" aria-controls="zeven">
+            <ul>
+                <li>{{ pedido.produto7 }}</li>
+            </ul>
+          </a>
+          <a class="list-group-item list-group-item-action retirar" id="list-produto8" data-toggle="list" href="#list-description8" role="tab" aria-controls="zeven">
+            <ul>
+                <li>{{ pedido.produto8 }}</li>
+            </ul>
+          </a>
+          <a class="list-group-item list-group-item-action retirar" id="list-produto9" data-toggle="list" href="#list-description9" role="tab" aria-controls="zeven">
+            <ul>
+                <li>{{ pedido.produto9 }}</li>
+            </ul>
+          </a>
+          <a class="list-group-item list-group-item-action retirar" id="list-produto10" data-toggle="list" href="#list-description10" role="tab" aria-controls="zeven">
+            <ul>
+                <li>{{ pedido.produto10 }}</li>
+            </ul>
+          </a>
+          <a class="list-group-item list-group-item-action retirar" id="list-produto11" data-toggle="list" href="#list-description11" role="tab" aria-controls="zeven">
+            <ul>
+                <li>{{ pedido.produto11 }}</li>
+            </ul>
+          </a>
+          <a class="list-group-item list-group-item-action retirar" id="list-produto12" data-toggle="list" href="#list-description12" role="tab" aria-controls="zeven">
+            <ul>
+                <li>{{ pedido.produto12 }}</li>
+            </ul>
+          </a>
+          <a class="list-group-item list-group-item-action retirar" id="list-produto13" data-toggle="list" href="#list-description13" role="tab" aria-controls="zeven">
+            <ul>
+                <li>{{ pedido.produto13 }}</li>
+            </ul>
+          </a>
+          <a class="list-group-item list-group-item-action retirar" id="list-produto14" data-toggle="list" href="#list-description14" role="tab" aria-controls="zeven">
+            <ul>
+                <li>{{ pedido.produto14 }}</li>
+            </ul>
+          </a>
+          <a class="list-group-item list-group-item-action retirar" id="list-produto15" data-toggle="list" href="#list-description15" role="tab" aria-controls="zeven">
+            <ul>
+                <li>{{ pedido.produto15 }}</li>
+            </ul>
+          </a>
+          <a class="list-group-item list-group-item-action retirar" id="list-produto16" data-toggle="list" href="#list-description16" role="tab" aria-controls="zeven">
+            <ul>
+                <li>{{ pedido.produto16 }}</li>
+            </ul>
+          </a>
+          <a class="list-group-item list-group-item-action retirar" id="list-produto17" data-toggle="list" href="#list-description17" role="tab" aria-controls="zeven">
+            <ul>
+                <li>{{ pedido.produto17 }}</li>
+            </ul>
+          </a>
+          <a class="list-group-item list-group-item-action retirar" id="list-produto18" data-toggle="list" href="#list-description18" role="tab" aria-controls="zeven">
+            <ul>
+                <li>{{ pedido.produto18 }}</li>
+            </ul>
+          </a>
+          <a class="list-group-item list-group-item-action retirar" id="list-produto19" data-toggle="list" href="#list-description19" role="tab" aria-controls="zeven">
+            <ul>
+                <li>{{ pedido.produto19 }}</li>
+            </ul>
+          </a>
+          <a class="list-group-item list-group-item-action retirar" id="list-produto20" data-toggle="list" href="#list-description20" role="tab" aria-controls="zeven">
+            <ul>
+                <li>{{ pedido.produto20 }}</li>
+            </ul>
+          </a>
+
+        </div>
+      </div>
+      <div class="col-8">
+        <div class="tab-content" id="nav-tabContent">
+            <div class="tab-pane fade show active" id="list-description1" role="tabpanel" aria-labelledby="list-description1-list">
+                        <table class="table">
+                        <thead class="thead-light">
+                        <tr>
+                            <th scope="col">Categoria</th>
+                            <th scope="col">Valor base</th>
+                            <th scope="col">Unidade medida</th>
+                            <th scope="col">Quantidade</th>
+                            <th scope="col">Marca</th>
+                            <th scope="col">Data Fim</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td>{{ pedido.categoria1 }}</td>
+                            <td>{{ pedido.valor_base1 }}</td>
+                            <td>{{ pedido.unidade_medida1 }}</td>
+                            <td>{{ pedido.quantidade1 }}</td>
+                            <td>{{ pedido.marca1 }}</td>
+                            <td>xx/xx/xx</td>
+                        </tr>
+                        </tbody>
+                        </table>
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-md-12"></div>
+                                <textarea class="col-md-12" name="observacao_1"></textarea>
+                            </div>  
+                        </div>
+            </div>
+            <div class="tab-pane fade show" id="list-description2" role="tabpanel" aria-labelledby="list-description2-list">
+                <table class="table">
+                <thead class="thead-light">
+                <tr>
+                    <th scope="col">Categoria</th>
+                    <th scope="col">Valor base</th>
+                    <th scope="col">Unidade medida</th>
+                    <th scope="col">Quantidade</th>
+                    <th scope="col">Marca</th>
+                    <th scope="col">Data Fim</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>{{ pedido.categoria2 }}</td>
+                    <td>{{ pedido.valor_base2 }}</td>
+                    <td>{{ pedido.unidade_medida2 }}</td>
+                    <td>{{ pedido.quantidade2 }}</td>
+                    <td>{{ pedido.marca2 }}</td>
+                    <td>xx/xx/xx</td>
+                </tr>
+                </tbody>
+                </table>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12"></div>
+                        <textarea class="col-md-12" name="observacao_2"></textarea>
+                    </div>  
+                </div>
+            </div>
+            <div class="tab-pane fade show" id="list-description3" role="tabpanel" aria-labelledby="list-description3-list">
+                <table class="table">
+                <thead class="thead-light">
+                <tr>
+                    <th scope="col">Categoria</th>
+                    <th scope="col">Valor base</th>
+                    <th scope="col">Unidade medida</th>
+                    <th scope="col">Quantidade</th>
+                    <th scope="col">Marca</th>
+                    <th scope="col">Data Fim</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>{{ pedido.categoria3 }}</td>
+                    <td>{{ pedido.valor_base3 }}</td>
+                    <td>{{ pedido.unidade_medida3 }}</td>
+                    <td>{{ pedido.quantidade3 }}</td>
+                    <td>{{ pedido.marca3 }}</td>
+                    <td>xx/xx/xx</td>
+                </tr>
+                </tbody>
+                </table>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12"></div>
+                        <textarea class="col-md-12" name="observacao_3"></textarea>
+                    </div>  
+                </div>
+            </div>
+            <div class="tab-pane fade show" id="list-description4" role="tabpanel" aria-labelledby="list-description4-list">
+                <table class="table">
+                <thead class="thead-light">
+                <tr>
+                    <th scope="col">Categoria</th>
+                    <th scope="col">Valor base</th>
+                    <th scope="col">Unidade medida</th>
+                    <th scope="col">Quantidade</th>
+                    <th scope="col">Marca</th>
+                    <th scope="col">Data Fim</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>{{ pedido.categoria4 }}</td>
+                    <td>{{ pedido.valor_base4 }}</td>
+                    <td>{{ pedido.unidade_medida4 }}</td>
+                    <td>{{ pedido.quantidade4 }}</td>
+                    <td>{{ pedido.marca4 }}</td>
+                    <td>xx/xx/xx</td>
+                </tr>
+                </tbody>
+                </table>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12"></div>
+                        <textarea class="col-md-12" name="observacao_4"></textarea>
+                    </div>  
+                </div>
+            </div>
+            <div class="tab-pane fade show" id="list-description5" role="tabpanel" aria-labelledby="list-description5-list">
+                <table class="table">
+                <thead class="thead-light">
+                <tr>
+                    <th scope="col">Categoria</th>
+                    <th scope="col">Valor base</th>
+                    <th scope="col">Unidade medida</th>
+                    <th scope="col">Quantidade</th>
+                    <th scope="col">Marca</th>
+                    <th scope="col">Data Fim</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>{{ pedido.categoria5 }}</td>
+                    <td>{{ pedido.valor_base5 }}</td>
+                    <td>{{ pedido.unidade_medida5 }}</td>
+                    <td>{{ pedido.quantidade5 }}</td>
+                    <td>{{ pedido.marca5 }}</td>
+                    <td>xx/xx/xx</td>
+                </tr>
+                </tbody>
+                </table>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12"></div>
+                        <textarea class="col-md-12" name="observacao_5"></textarea>
+                    </div>  
+                </div>
+            </div>
+            <div class="tab-pane fade show" id="list-description6" role="tabpanel" aria-labelledby="list-description6-list">
+                <table class="table">
+                <thead class="thead-light">
+                <tr>
+                    <th scope="col">Categoria</th>
+                    <th scope="col">Valor base</th>
+                    <th scope="col">Unidade medida</th>
+                    <th scope="col">Quantidade</th>
+                    <th scope="col">Marca</th>
+                    <th scope="col">Data Fim</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>{{ pedido.categoria6 }}</td>
+                    <td>{{ pedido.valor_base6 }}</td>
+                    <td>{{ pedido.unidade_medida6 }}</td>
+                    <td>{{ pedido.quantidade6 }}</td>
+                    <td>{{ pedido.marca6 }}</td>
+                    <td>xx/xx/xx</td>
+                </tr>
+                </tbody>
+                </table>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12"></div>
+                        <textarea class="col-md-12" name="observacao_6"></textarea>
+                    </div>  
+                </div>
+            </div>
+            <div class="tab-pane fade show" id="list-description7" role="tabpanel" aria-labelledby="list-description7-list">
+                <table class="table">
+                <thead class="thead-light">
+                <tr>
+                    <th scope="col">Categoria</th>
+                    <th scope="col">Valor base</th>
+                    <th scope="col">Unidade medida</th>
+                    <th scope="col">Quantidade</th>
+                    <th scope="col">Marca</th>
+                    <th scope="col">Data Fim</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>{{ pedido.categoria7 }}</td>
+                    <td>{{ pedido.valor_base7 }}</td>
+                    <td>{{ pedido.unidade_medida7 }}</td>
+                    <td>{{ pedido.quantidade7 }}</td>
+                    <td>{{ pedido.marca7 }}</td>
+                    <td>xx/xx/xx</td>
+                </tr>
+                </tbody>
+                </table>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12"></div>
+                        <textarea class="col-md-12" name="observacao_7"></textarea>
+                    </div>  
+                </div>
+            </div>
+            <div class="tab-pane fade show" id="list-description8" role="tabpanel" aria-labelledby="list-description8-list">
+                <table class="table">
+                <thead class="thead-light">
+                <tr>
+                    <th scope="col">Categoria</th>
+                    <th scope="col">Valor base</th>
+                    <th scope="col">Unidade medida</th>
+                    <th scope="col">Quantidade</th>
+                    <th scope="col">Marca</th>
+                    <th scope="col">Data Fim</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>{{ pedido.categoria8 }}</td>
+                    <td>{{ pedido.valor_base8 }}</td>
+                    <td>{{ pedido.unidade_medida8 }}</td>
+                    <td>{{ pedido.quantidade8 }}</td>
+                    <td>{{ pedido.marca8 }}</td>
+                    <td>xx/xx/xx</td>
+                </tr>
+                </tbody>
+                </table>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12"></div>
+                        <textarea class="col-md-12" name="observacao_8"></textarea>
+                    </div>  
+                </div>
+            </div>
+            <div class="tab-pane fade show" id="list-description9" role="tabpanel" aria-labelledby="list-description9-list">
+                <table class="table">
+                <thead class="thead-light">
+                <tr>
+                    <th scope="col">Categoria</th>
+                    <th scope="col">Valor base</th>
+                    <th scope="col">Unidade medida</th>
+                    <th scope="col">Quantidade</th>
+                    <th scope="col">Marca</th>
+                    <th scope="col">Data Fim</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>{{ pedido.categoria9 }}</td>
+                    <td>{{ pedido.valor_base9 }}</td>
+                    <td>{{ pedido.unidade_medida9 }}</td>
+                    <td>{{ pedido.quantidade9 }}</td>
+                    <td>{{ pedido.marca9 }}</td>
+                    <td>xx/xx/xx</td>
+                </tr>
+                </tbody>
+                </table>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12"></div>
+                        <textarea class="col-md-12" name="observacao_9"></textarea>
+                    </div>  
+                </div>
+            </div>
+            <div class="tab-pane fade show" id="list-description10" role="tabpanel" aria-labelledby="list-description10-list">
+                <table class="table">
+                <thead class="thead-light">
+                <tr>
+                    <th scope="col">Categoria</th>
+                    <th scope="col">Valor base</th>
+                    <th scope="col">Unidade medida</th>
+                    <th scope="col">Quantidade</th>
+                    <th scope="col">Marca</th>
+                    <th scope="col">Data Fim</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>{{ pedido.categoria10 }}</td>
+                    <td>{{ pedido.valor_base10 }}</td>
+                    <td>{{ pedido.unidade_medida10 }}</td>
+                    <td>{{ pedido.quantidade10 }}</td>
+                    <td>{{ pedido.marca10 }}</td>
+                    <td>xx/xx/xx</td>
+                </tr>
+                </tbody>
+                </table>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12"></div>
+                        <textarea class="col-md-12" name="observacao_10"></textarea>
+                    </div>  
+                </div>
+            </div>
+            <div class="tab-pane fade show" id="list-description11" role="tabpanel" aria-labelledby="list-description11-list">
+                <table class="table">
+                <thead class="thead-light">
+                <tr>
+                    <th scope="col">Categoria</th>
+                    <th scope="col">Valor base</th>
+                    <th scope="col">Unidade medida</th>
+                    <th scope="col">Quantidade</th>
+                    <th scope="col">Marca</th>
+                    <th scope="col">Data Fim</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>{{ pedido.categoria11 }}</td>
+                    <td>{{ pedido.valor_base11 }}</td>
+                    <td>{{ pedido.unidade_medida11 }}</td>
+                    <td>{{ pedido.quantidade11 }}</td>
+                    <td>{{ pedido.marca11 }}</td>
+                    <td>xx/xx/xx</td>
+                </tr>
+                </tbody>
+                </table>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12"></div>
+                        <textarea class="col-md-12" name="observacao_11"></textarea>
+                    </div>  
+                </div>
+            </div>
+            <div class="tab-pane fade show" id="list-description12" role="tabpanel" aria-labelledby="list-description12-list">
+                <table class="table">
+                <thead class="thead-light">
+                <tr>
+                    <th scope="col">Categoria</th>
+                    <th scope="col">Valor base</th>
+                    <th scope="col">Unidade medida</th>
+                    <th scope="col">Quantidade</th>
+                    <th scope="col">Marca</th>
+                    <th scope="col">Data Fim</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>{{ pedido.categoria12 }}</td>
+                    <td>{{ pedido.valor_base12 }}</td>
+                    <td>{{ pedido.unidade_medida12 }}</td>
+                    <td>{{ pedido.quantidade12 }}</td>
+                    <td>{{ pedido.marca12 }}</td>
+                    <td>xx/xx/xx</td>
+                </tr>
+                </tbody>
+                </table>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12"></div>
+                        <textarea class="col-md-12" name="observacao_12"></textarea>
+                    </div>  
+                </div>
+            </div>
+            <div class="tab-pane fade show" id="list-description13" role="tabpanel" aria-labelledby="list-description13-list">
+                <table class="table">
+                <thead class="thead-light">
+                <tr>
+                    <th scope="col">Categoria</th>
+                    <th scope="col">Valor base</th>
+                    <th scope="col">Unidade medida</th>
+                    <th scope="col">Quantidade</th>
+                    <th scope="col">Marca</th>
+                    <th scope="col">Data Fim</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>{{ pedido.categoria13 }}</td>
+                    <td>{{ pedido.valor_base13 }}</td>
+                    <td>{{ pedido.unidade_medida13 }}</td>
+                    <td>{{ pedido.quantidade13 }}</td>
+                    <td>{{ pedido.marca13 }}</td>
+                    <td>xx/xx/xx</td>
+                </tr>
+                </tbody>
+                </table>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12"></div>
+                        <textarea class="col-md-12" name="observacao_13"></textarea>
+                    </div>  
+                </div>
+            </div>
+            <div class="tab-pane fade show" id="list-description14" role="tabpanel" aria-labelledby="list-description14-list">
+                <table class="table">
+                <thead class="thead-light">
+                <tr>
+                    <th scope="col">Categoria</th>
+                    <th scope="col">Valor base</th>
+                    <th scope="col">Unidade medida</th>
+                    <th scope="col">Quantidade</th>
+                    <th scope="col">Marca</th>
+                    <th scope="col">Data Fim</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>{{ pedido.categoria14 }}</td>
+                    <td>{{ pedido.valor_base14 }}</td>
+                    <td>{{ pedido.unidade_medida14 }}</td>
+                    <td>{{ pedido.quantidade14 }}</td>
+                    <td>{{ pedido.marca14 }}</td>
+                    <td>xx/xx/xx</td>
+                </tr>
+                </tbody>
+                </table>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12"></div>
+                        <textarea class="col-md-12" name="observacao_14"></textarea>
+                    </div>  
+                </div>
+            </div>
+            <div class="tab-pane fade show" id="list-description15" role="tabpanel" aria-labelledby="list-description15-list">
+                <table class="table">
+                <thead class="thead-light">
+                <tr>
+                    <th scope="col">Categoria</th>
+                    <th scope="col">Valor base</th>
+                    <th scope="col">Unidade medida</th>
+                    <th scope="col">Quantidade</th>
+                    <th scope="col">Marca</th>
+                    <th scope="col">Data Fim</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>{{ pedido.categoria15 }}</td>
+                    <td>{{ pedido.valor_base15 }}</td>
+                    <td>{{ pedido.unidade_medida15 }}</td>
+                    <td>{{ pedido.quantidade15 }}</td>
+                    <td>{{ pedido.marca15 }}</td>
+                    <td>xx/xx/xx</td>
+                </tr>
+                </tbody>
+                </table>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12"></div>
+                        <textarea class="col-md-12" name="observacao_15"></textarea>
+                    </div>  
+                </div>
+            </div>
+            <div class="tab-pane fade show" id="list-description16" role="tabpanel" aria-labelledby="list-description16-list">
+                <table class="table">
+                <thead class="thead-light">
+                <tr>
+                    <th scope="col">Categoria</th>
+                    <th scope="col">Valor base</th>
+                    <th scope="col">Unidade medida</th>
+                    <th scope="col">Quantidade</th>
+                    <th scope="col">Marca</th>
+                    <th scope="col">Data Fim</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>{{ pedido.categoria16 }}</td>
+                    <td>{{ pedido.valor_base16 }}</td>
+                    <td>{{ pedido.unidade_medida16 }}</td>
+                    <td>{{ pedido.quantidade16 }}</td>
+                    <td>{{ pedido.marca16 }}</td>
+                    <td>xx/xx/xx</td>
+                </tr>
+                </tbody>
+                </table>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12"></div>
+                        <textarea class="col-md-12" name="observacao_16"></textarea>
+                    </div>  
+                </div>
+            </div>
+            <div class="tab-pane fade show" id="list-description17" role="tabpanel" aria-labelledby="list-description17-list">
+                <table class="table">
+                <thead class="thead-light">
+                <tr>
+                    <th scope="col">Categoria</th>
+                    <th scope="col">Valor base</th>
+                    <th scope="col">Unidade medida</th>
+                    <th scope="col">Quantidade</th>
+                    <th scope="col">Marca</th>
+                    <th scope="col">Data Fim</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>{{ pedido.categoria17 }}</td>
+                    <td>{{ pedido.valor_base17 }}</td>
+                    <td>{{ pedido.unidade_medida17 }}</td>
+                    <td>{{ pedido.quantidade17 }}</td>
+                    <td>{{ pedido.marca17 }}</td>
+                    <td>xx/xx/xx</td>
+                </tr>
+                </tbody>
+                </table>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12"></div>
+                        <textarea class="col-md-12" name="observacao_17"></textarea>
+                    </div>  
+                </div>
+            </div>
+            <div class="tab-pane fade show" id="list-description18" role="tabpanel" aria-labelledby="list-description18-list">
+                <table class="table">
+                <thead class="thead-light">
+                <tr>
+                    <th scope="col">Categoria</th>
+                    <th scope="col">Valor base</th>
+                    <th scope="col">Unidade medida</th>
+                    <th scope="col">Quantidade</th>
+                    <th scope="col">Marca</th>
+                    <th scope="col">Data Fim</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>{{ pedido.categoria18 }}</td>
+                    <td>{{ pedido.valor_base18 }}</td>
+                    <td>{{ pedido.unidade_medida18 }}</td>
+                    <td>{{ pedido.quantidade18 }}</td>
+                    <td>{{ pedido.marca18 }}</td>
+                    <td>xx/xx/xx</td>
+                </tr>
+                </tbody>
+                </table>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12"></div>
+                        <textarea class="col-md-12" name="observacao_18"></textarea>
+                    </div>  
+                </div>
+            </div>
+            <div class="tab-pane fade show" id="list-description19" role="tabpanel" aria-labelledby="list-description19-list">
+                <table class="table">
+                <thead class="thead-light">
+                <tr>
+                    <th scope="col">Categoria</th>
+                    <th scope="col">Valor base</th>
+                    <th scope="col">Unidade medida</th>
+                    <th scope="col">Quantidade</th>
+                    <th scope="col">Marca</th>
+                    <th scope="col">Data Fim</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>{{ pedido.categoria19 }}</td>
+                    <td>{{ pedido.valor_base19 }}</td>
+                    <td>{{ pedido.unidade_medida19 }}</td>
+                    <td>{{ pedido.quantidade19 }}</td>
+                    <td>{{ pedido.marca19 }}</td>
+                    <td>xx/xx/xx</td>
+                </tr>
+                </tbody>
+                </table>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12"></div>
+                        <textarea class="col-md-12" name="observacao_19"></textarea>
+                    </div>  
+                </div>
+            </div>
+            <div class="tab-pane fade show" id="list-description20" role="tabpanel" aria-labelledby="list-description20-list">
+                <table class="table">
+                <thead class="thead-light">
+                <tr>
+                    <th scope="col">Categoria</th>
+                    <th scope="col">Valor base</th>
+                    <th scope="col">Unidade medida</th>
+                    <th scope="col">Quantidade</th>
+                    <th scope="col">Marca</th>
+                    <th scope="col">Data Fim</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>{{ pedido.categoria20 }}</td>
+                    <td>{{ pedido.valor_base20 }}</td>
+                    <td>{{ pedido.unidade_medida20 }}</td>
+                    <td>{{ pedido.quantidade20 }}</td>
+                    <td>{{ pedido.marca20 }}</td>
+                    <td>xx/xx/xx</td>
+                </tr>
+                </tbody>
+                </table>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12"></div>
+                        <textarea class="col-md-12" name="observacao_20"></textarea>
+                    </div>  
+                </div>
+            </div>
+          <div class="tab-pane fade" id="list-messages" role="tabpanel" aria-labelledby="list-messages-list">...</div>
+          <div class="tab-pane fade" id="list-settings" role="tabpanel" aria-labelledby="list-settings-list">...</div>
+        </div>
+      </div>
+      <div class="col-md-2">
+        <div class="container">
+            <label for="">Fornecedor:</label>
+            <select name="fornecedor" id="fornecedor">
+                <option value="{{ user.get_username }}">{{ user.get_username }}</option>
+            </select> 
+        </div>
+      </div>
+    </div>
+</div>
+</div>
+<div class="row">
+            <div class="form-group col-md-12">
+                <button  class="btn btn-primary m-2" type="submit">Salvar</button>
+            
+                <a href="/listar_fornecedores/">
+                    <button type="button" class="btn btn-danger m-2">
+                        Cancelar
+                    </button>
+                </a>
+            </div>
+        </div>
+</form>
+{% endblock %}
