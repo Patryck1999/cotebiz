@@ -1,9 +1,21 @@
 {% extends "pagina-modelo.html" %}
+{% block style %}
+    <link rel="stylesheet" type="text/css" href="/static/css/lista-fornecedor.css">
+{% endblock %}
 {% block content %}
 <div class="conteudo">
     <div class="container">
-        <div class="row w-100">
-            <a onclick="limpar_campos()" class="nav-link ml-4" href="/cadastrar_fornecedor/"><button type="button" class="btn btn-info">Cadastro de Fornecedor</button></a>
+        <div class="row">
+            <a href="/cadastrar_fornecedor/">
+                <div class="logo-container">
+                     <div class="logo face">
+                         <img src="/static/imagens/add-pedido.png" alt="pedido de cotação">
+                     </div>
+                     <div class="brand">
+                         Novo Fornecedor
+                     </div>
+                 </div>
+             </a>
         </div>
     </div>
         

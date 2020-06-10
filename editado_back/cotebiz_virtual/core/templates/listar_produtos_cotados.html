@@ -6,8 +6,8 @@
         <form method="GET" action="#">
             <div class="form-row">
               <div class="form-group col-md-2 col-lg-2">
-                <label for="pedido"><strong>Nº Pedido</strong></label>
-                <input type="number" min='0' class="form-control" id="pedido" name="n_pedido" placeholder="Pedido">
+                <label for="leilao"><strong>Nº Leilão</strong></label>
+                <input type="number" min='0' class="form-control" id="leilao" name="n_leilao" placeholder="Leilão">
               </div>
               <div class="form-group col-md-2 col-lg-2">
                   <label for="nome"><strong>Cliente</strong></label>
@@ -16,9 +16,9 @@
               <button type="submit" class="btn btn-primary  mt-4 mb-3">Filtrar</button>
             </div>
       </form>
-      <h1 class="text-center "><u>Lista de Pedidos</u></h1>
+      <h1 class="text-center "><u>Lista de Pedidos Cotação Leiloados</u></h1>
         <div class="row w-100">
-            <div class="col border bg-light" ><strong>Nº Pedido</strong></div>
+            <div class="col border bg-light" ><strong>Nº Leilão</strong></div>
             <div class="col border bg-light"><strong>Fornecedor</strong></div>
             <div class="col border bg-light"><strong>Observação</strong></div>
 
@@ -26,7 +26,7 @@
     {% for item in produtos_cotados %}
         <div class="container">
             <div class="row w-100">
-                <div class="col border-bottom-3 bg-light" ><a onclick="limpar_campos()" href="/pedido_detalhar/{{item.id}}">{{ item.id }}</a></div>
+                <div class="col border-bottom-3 bg-light" ><a onclick="limpar_campos()" href="/pedido_detalhar/{{item.id}}">{{ item.n_leilao }}</a></div>
                 <div class="col border-bottom-0 bg-light" ><a onclick="limpar_campos()" href="/pedido_detalhar/{{item.id}}">{{ item.fornecedor }}</a></div>
                 <div class="col border-bottom-0 bg-light" ><a onclick="limpar_campos()" href="/pedido_detalhar/{{item.id}}">{{ item.observacao_1 }}</a></div>
             

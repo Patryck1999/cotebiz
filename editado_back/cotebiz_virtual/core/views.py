@@ -90,6 +90,7 @@ def adicionar_pedido(request):
         
 @login_required(login_url='/login_user/')
 def adicionar_pedido_submit(request):
+    numero_do_pedido = request.POST.get('numero_do_pedido')
     data = request.POST.get('data')
     nome = request.POST.get('nome')
     razao_social = request.POST.get('razao_social')
@@ -244,7 +245,7 @@ def adicionar_pedido_submit(request):
     quantidade20 = request.POST.get('quantidade20')
     marca20 = request.POST.get('marca20')
 
-    pedido = Pedido_de_cotacao.objects.create(data_agora=data, nome=nome, razao_social=razao_social,
+    pedido = Pedido_de_cotacao.objects.create(n_pedido=numero_do_pedido, data_agora=data, nome=nome, razao_social=razao_social,
             cnpj=cnpj, plano=plano, cep=cep,rua=rua, bairro=bairro, cidade=cidade,
             numero=numero, telefone=telefone, celular=celular, email=email,
             produto1=produto1, categoria1=categoria1, valor_base1=valor_base1, unidade_medida1=unidade_medida1, marca1=marca1, quantidade1=quantidade1,
@@ -338,12 +339,12 @@ def listar_produtos_cotados(request):
 def lista_de_pedidos(request):
     if str(request.user) == 'admin':
         pedido = Pedido_de_cotacao.objects.all()
-        n_pedido_query = request.GET.get('numero_do_pedido')
+        n_pedido_query = request.GET.get('numero_pedido')
         razao_social_query = request.GET.get('razao_social')
         cnpj_query = request.GET.get('id_cnpj')
             
         if n_pedido_query != '' and n_pedido_query is not None:
-            pedido = pedido.filter(id=n_pedido_query)
+            pedido = pedido.filter(n_pedido__icontains=n_pedido_query)
 
         if razao_social_query != '' and razao_social_query is not None:
             pedido = pedido.filter(razao_social__icontains=razao_social_query)
