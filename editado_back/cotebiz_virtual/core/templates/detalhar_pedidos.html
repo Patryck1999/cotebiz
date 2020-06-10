@@ -11,7 +11,7 @@
     <div class="form-row">
         <div class="form-group col-md-3">
             <label><strong>Numero do pedido:</strong></label>
-            {{ pedido.id }}
+            {{ pedido.n_pedido }}
         </div>
         <div class="form-group col-md-3">
             <label><strong>Nome Fantasia::</strong></label>
@@ -76,6 +76,10 @@
         <div class="form-group col-md-12">
             <h2>Itens do pedido</h2>
             <hr>
+        </div>
+        <div class="form-group col-md-12">
+            <label for="id_email"><strong>Nº Leilão:</strong></label>
+        {{ pedido.n_leilao }}
         </div>
         <div class="form-group col-md-4">
             <label for="id_email"><strong>Produto 1:</strong></label>

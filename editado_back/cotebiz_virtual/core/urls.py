@@ -19,11 +19,13 @@ urlpatterns = [
     path('lista_de_sala_de_leilao/', views.lista_de_sala_de_leilao, name='lista_de_sala_de_leilao'),
     path('detalhar_fornecedor/<id>/', views.detalhar_fornecedor, name='detalhar_fornecedor'),
     path('detalhar_pedido/<id>/', views.detalhar_pedido, name='detalhar_pedido'),
+    path('detalhar_produtos_cotados/<id>/', views.detalhar_produtos_cotados, name='detalhar_produtos_cotados'),
     path('detalhar_pedido_da_sala_de_leilao/<id>/', views.detalhar_pedido_da_sala_de_leilao, name='detalhar_pedido_da_sala_de_leilao'),
     path('detalhar_pedido_da_sala_de_leilao/<id>/submit', views.detalhar_pedido_da_sala_de_leilao_submit, name='detalhar_pedido_da_sala_de_leilao_submit'),
     path('atualizar_fornecedor/<int:id>/', views.atualizar_fornecedor, name='atualizar_fornecedor'),
     path('atualizar_pedido/<int:id>/', views.atualizar_pedido, name='atualizar_pedido'),
     path('delete/<int:id>/', views.delete_fornecedor, name='delete_fornecedor'),   
+    
 ]
 
 # CRUD - CREATE, READ, UPDATE, DELETE

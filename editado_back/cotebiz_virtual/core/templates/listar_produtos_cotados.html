@@ -7,11 +7,11 @@
             <div class="form-row">
               <div class="form-group col-md-2 col-lg-2">
                 <label for="leilao"><strong>Nº Leilão</strong></label>
-                <input type="number" min='0' class="form-control" id="leilao" name="n_leilao" placeholder="Leilão">
+                <input type="text" class="form-control" id="n_leilao" name="n_leilao" placeholder="Leilão">
               </div>
               <div class="form-group col-md-2 col-lg-2">
-                  <label for="nome"><strong>Cliente</strong></label>
-                  <input type="text" class="form-control" id="nome" name="nome" placeholder="Cliente">
+                  <label for="nome"><strong>Fornecedor</strong></label>
+                  <input type="text" class="form-control" id="fornecedor" name="fornecedor" placeholder="Cliente">
               </div>
               <button type="submit" class="btn btn-primary  mt-4 mb-3">Filtrar</button>
             </div>
@@ -20,16 +20,13 @@
         <div class="row w-100">
             <div class="col border bg-light" ><strong>Nº Leilão</strong></div>
             <div class="col border bg-light"><strong>Fornecedor</strong></div>
-            <div class="col border bg-light"><strong>Observação</strong></div>
 
         </div>
     {% for item in produtos_cotados %}
         <div class="container">
             <div class="row w-100">
-                <div class="col border-bottom-3 bg-light" ><a onclick="limpar_campos()" href="/pedido_detalhar/{{item.id}}">{{ item.n_leilao }}</a></div>
-                <div class="col border-bottom-0 bg-light" ><a onclick="limpar_campos()" href="/pedido_detalhar/{{item.id}}">{{ item.fornecedor }}</a></div>
-                <div class="col border-bottom-0 bg-light" ><a onclick="limpar_campos()" href="/pedido_detalhar/{{item.id}}">{{ item.observacao_1 }}</a></div>
-            
+                <div class="col border-bottom-3 bg-light" ><a onclick="limpar_campos()" href="/detalhar_produtos_cotados/{{item.id}}">{{ item.n_leilao }}</a></div>
+                <div class="col border-bottom-0 bg-light" ><a onclick="limpar_campos()" href="/detalhar_produtos_cotados/{{item.id}}">{{ item.fornecedor }}</a></div>
             </div>
         </div>
     {% endfor %}

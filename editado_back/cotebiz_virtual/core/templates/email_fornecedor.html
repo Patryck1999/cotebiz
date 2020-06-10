@@ -25,7 +25,7 @@
                                 <textarea id="form_message" name="mensagem" class="form-control"
                                     placeholder="Message for me *" rows="4" required="required"
                                     data-error="Please, leave us a message.">
-{% for p in pedido %}{{ p.id }}, {{ p.nome}}, {{ p.razao_social }}, {{ p.cnpj }}, {{ p.plano }},{{ p.cep }}, {{ p.rua }}, {{ p.bairro }}, {{ p.cidade }}, {{ p.numero }}, {{ p.telefone }}, {{ p.celular }}, {{ p.email }}, {{ p.produto1 }},{{ p.categoria1 }}, {{ p.valor_base1 }}, {{ p.unidade_medida1 }}, {{ p.quantidade1 }}, {{ p.marca1 }} ;
+{% for p in pedido %}Novo pedido de cotação aberto nº{{ p.n_leilao }}
 {% endfor %}
                                     </textarea>
                                 <div class="help-block with-errors"></div>

@@ -723,9 +723,10 @@
       <div class="col-md-2">
         <div class="container">
             <label for="">Fornecedor:</label>
-            <select name="fornecedor" id="fornecedor">
-                <option value="{{ user.get_username }}">{{ user.get_username }}</option>
-            </select> 
+            <input name="fornecedor" id="fornecedor" type="text" value="{{ user.get_username }}" readonly/>
+
+            <label for="">Nº de Leilão:</label>
+            <input id="n_leilao" name="n_leilao" type="text" value="{{ pedido.n_leilao }}" readonly/>
         </div>
       </div>
     </div>

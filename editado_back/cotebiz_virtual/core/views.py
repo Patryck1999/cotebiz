@@ -36,7 +36,7 @@ def home(request):
 
 @login_required(login_url='/login_user/')
 def envio_de_email_fornecedor(request):
-    pedido = Pedido_de_cotacao.objects.all()
+    pedido = Pedido_de_cotacao_clone.objects.all()
     context={
         'pedido':pedido
     }
@@ -63,7 +63,7 @@ class SendFormEmail(View):
         ) 
 
         # Redirect to same page after form submit
-        return redirect('home') 
+        return redirect('lista_de_pedidos') 
 
 @login_required(login_url='/login_user/')
 def cadastrar_fornecedor(request):
@@ -84,6 +84,7 @@ def cadastrar_fornecedor(request):
 @login_required(login_url='/login_user/')
 def adicionar_pedido(request):
     if str(request.user) == 'admin':
+        Pedido_de_cotacao_clone.objects.all().delete()
         return render(request, 'criar_pedido.html')
     else:
         return redirect('/')
@@ -104,7 +105,8 @@ def adicionar_pedido_submit(request):
     telefone = request.POST.get('telefone')
     celular = request.POST.get('celular')
     email = request.POST.get('email')
-     
+
+    numero_de_leilao = request.POST.get('numero_de_leilao') 
     produto1 = request.POST.get('produto1')
     categoria1 = request.POST.get('categoria1')
     valor_base1= request.POST.get('valor_base1')
@@ -247,7 +249,7 @@ def adicionar_pedido_submit(request):
 
     pedido = Pedido_de_cotacao.objects.create(n_pedido=numero_do_pedido, data_agora=data, nome=nome, razao_social=razao_social,
             cnpj=cnpj, plano=plano, cep=cep,rua=rua, bairro=bairro, cidade=cidade,
-            numero=numero, telefone=telefone, celular=celular, email=email,
+            numero=numero, telefone=telefone, celular=celular, email=email, n_leilao=numero_de_leilao,
             produto1=produto1, categoria1=categoria1, valor_base1=valor_base1, unidade_medida1=unidade_medida1, marca1=marca1, quantidade1=quantidade1,
             produto2=produto2, categoria2=categoria2, valor_base2=valor_base2, unidade_medida2=unidade_medida2, marca2=marca2, quantidade2=quantidade2,
             produto3=produto3, categoria3=categoria3, valor_base3=valor_base3, unidade_medida3=unidade_medida3, marca3=marca3, quantidade3=quantidade3,
@@ -270,6 +272,30 @@ def adicionar_pedido_submit(request):
             produto20=produto20, categoria20=categoria20, valor_base20=valor_base20, unidade_medida20=unidade_medida20, marca20=marca20, quantidade20=quantidade20
             )
 
+    pedido_clone = Pedido_de_cotacao_clone.objects.create(n_pedido=numero_do_pedido, data_agora=data, nome=nome, razao_social=razao_social,
+            cnpj=cnpj, plano=plano, cep=cep,rua=rua, bairro=bairro, cidade=cidade,
+            numero=numero, telefone=telefone, celular=celular, email=email, n_leilao=numero_de_leilao,
+            produto1=produto1, categoria1=categoria1, valor_base1=valor_base1, unidade_medida1=unidade_medida1, marca1=marca1, quantidade1=quantidade1,
+            produto2=produto2, categoria2=categoria2, valor_base2=valor_base2, unidade_medida2=unidade_medida2, marca2=marca2, quantidade2=quantidade2,
+            produto3=produto3, categoria3=categoria3, valor_base3=valor_base3, unidade_medida3=unidade_medida3, marca3=marca3, quantidade3=quantidade3,
+            produto4=produto4, categoria4=categoria4, valor_base4=valor_base4, unidade_medida4=unidade_medida4, marca4=marca4, quantidade4=quantidade4,
+            produto5=produto5, categoria5=categoria5, valor_base5=valor_base5, unidade_medida5=unidade_medida5, marca5=marca5, quantidade5=quantidade5,
+            produto6=produto6, categoria6=categoria6, valor_base6=valor_base6, unidade_medida6=unidade_medida6, marca6=marca6, quantidade6=quantidade6,
+            produto7=produto7, categoria7=categoria7, valor_base7=valor_base7, unidade_medida7=unidade_medida7, marca7=marca7, quantidade7=quantidade7,
+            produto8=produto8, categoria8=categoria8, valor_base8=valor_base8, unidade_medida8=unidade_medida8, marca8=marca8, quantidade8=quantidade8,
+            produto9=produto9, categoria9=categoria9, valor_base9=valor_base9, unidade_medida9=unidade_medida9, marca9=marca9, quantidade9=quantidade9,
+            produto10=produto10, categoria10=categoria10, valor_base10=valor_base10, unidade_medida10=unidade_medida10, marca10=marca10, quantidade10=quantidade10,
+            produto11=produto11, categoria11=categoria11, valor_base11=valor_base11, unidade_medida11=unidade_medida11, marca11=marca11, quantidade11=quantidade11,
+            produto12=produto12, categoria12=categoria12, valor_base12=valor_base12, unidade_medida12=unidade_medida12, marca12=marca12, quantidade12=quantidade12,
+            produto13=produto13, categoria13=categoria13, valor_base13=valor_base13, unidade_medida13=unidade_medida13, marca13=marca13, quantidade13=quantidade13,
+            produto14=produto14, categoria14=categoria14, valor_base14=valor_base14, unidade_medida14=unidade_medida14, marca14=marca14, quantidade14=quantidade14,
+            produto15=produto15, categoria15=categoria15, valor_base15=valor_base15, unidade_medida15=unidade_medida15, marca15=marca15, quantidade15=quantidade15,
+            produto16=produto16, categoria16=categoria16, valor_base16=valor_base16, unidade_medida16=unidade_medida16, marca16=marca16, quantidade16=quantidade16,
+            produto17=produto17, categoria17=categoria17, valor_base17=valor_base17, unidade_medida17=unidade_medida17, marca17=marca17, quantidade17=quantidade17,
+            produto18=produto18, categoria18=categoria18, valor_base18=valor_base18, unidade_medida18=unidade_medida18, marca18=marca18, quantidade18=quantidade18,
+            produto19=produto19, categoria19=categoria19, valor_base19=valor_base19, unidade_medida19=unidade_medida19, marca19=marca19, quantidade19=quantidade19,
+            produto20=produto20, categoria20=categoria20, valor_base20=valor_base20, unidade_medida20=unidade_medida20, marca20=marca20, quantidade20=quantidade20
+            )
     return redirect('envio_de_email_fornecedor')
 
 @login_required(login_url='/login_user/')
@@ -329,8 +355,17 @@ def listar_fornecedores(request):
 def listar_produtos_cotados(request):
     if str(request.user) == 'admin':
         produtos_cotados = Pedido_de_cotacao_fornecedor.objects.all()
-        context = {
-            'produtos_cotados':produtos_cotados
+        n_leilao_query = request.GET.get('n_leilao')
+        fornecedor_query = request.GET.get('fornecedor')
+            
+        if n_leilao_query != '' and n_leilao_query is not None:
+            produtos_cotados = produtos_cotados.filter(n_leilao__icontains=n_leilao_query)
+
+        if fornecedor_query != '' and fornecedor_query is not None:
+            produtos_cotados = produtos_cotados.filter(fornecedor__icontains=fornecedor_query)
+
+        context={
+            'produtos_cotados': produtos_cotados
         }
         return render(request, 'listar_produtos_cotados.html', context)
     else:
@@ -362,25 +397,21 @@ def lista_de_pedidos(request):
 
 @login_required(login_url='/login_user/')
 def lista_de_sala_de_leilao(request):
-    if str(request.user) == 'admin':
-        pedido = Pedido_de_cotacao.objects.all()
-        n_pedido_query = request.GET.get('n_pedido')
-        nome_query = request.GET.get('nome')
-            
-        if n_pedido_query != '' and n_pedido_query is not None:
-            pedido = pedido.filter(id=n_pedido_query)
+    pedido = Pedido_de_cotacao.objects.all()
+    n_leilao_query = request.GET.get('n_leilao')
+    nome_query = request.GET.get('nome')
+        
+    if n_leilao_query != '' and n_leilao_query is not None:
+        pedido = pedido.filter(n_leilao__icontains=n_leilao_query)
 
-        if nome_query != '' and nome_query is not None:
-            pedido = pedido.filter(nome__icontains=nome_query)
+    if nome_query != '' and nome_query is not None:
+        pedido = pedido.filter(nome__icontains=nome_query)
 
+    context={
+        'pedido': pedido
+    }
 
-        context={
-            'pedido': pedido
-        }
-
-        return render(request, "lista_de_sala_de_leilao.html", context)
-    else:
-        return redirect('/')
+    return render(request, "lista_de_sala_de_leilao.html", context)
 
 @login_required(login_url='/login_user/')
 def detalhar_fornecedor(request, id):
@@ -403,20 +434,29 @@ def detalhar_pedido(request, id):
     else:
         return redirect('/')
 
+
+def detalhar_produtos_cotados(request, id):
+    if str(request.user) == 'admin':
+        pedido = Pedido_de_cotacao_fornecedor.objects.get(id=id)
+        context = {
+            'pedido':pedido
+        }
+        return render(request, 'detalhar_produtos_cotados.html', context)
+    else:
+        return redirect('/')
+
 @login_required(login_url='/login_user/')
 def detalhar_pedido_da_sala_de_leilao(request, id):
-    if str(request.user) == 'admin':
         pedido = Pedido_de_cotacao.objects.get(id=id)
         context = {
             'pedido':pedido
         }
         return render(request, 'detalhar_pedido_da_sala_de_leilao.html', context)
-    else:
-        return redirect('/')
 
 @login_required(login_url='/login_user/')
 def detalhar_pedido_da_sala_de_leilao_submit(request, id):
     fornecedor = request.POST.get('fornecedor')
+    n_leilao = request.POST.get('n_leilao')
     observacao1 = request.POST.get('observacao_1')
     observacao2 = request.POST.get('observacao_2')
     observacao3 = request.POST.get('observacao_3')
@@ -437,7 +477,7 @@ def detalhar_pedido_da_sala_de_leilao_submit(request, id):
     observacao18 = request.POST.get('observacao_18')
     observacao19 = request.POST.get('observacao_19')
     observacao20 = request.POST.get('observacao_20')
-    pedido_de_cotacao_fornecedor = Pedido_de_cotacao_fornecedor.objects.create(fornecedor=fornecedor ,observacao_1=observacao1, 
+    pedido_de_cotacao_fornecedor = Pedido_de_cotacao_fornecedor.objects.create(n_leilao=n_leilao, fornecedor=fornecedor ,observacao_1=observacao1, 
     observacao_2=observacao2, observacao_3=observacao3, observacao_4=observacao4, observacao_5=observacao5,
     observacao_6=observacao6, observacao_7=observacao7, observacao_8=observacao8, observacao_9=observacao9,
     observacao_10=observacao10, observacao_11=observacao11, observacao_12=observacao12, observacao_13=observacao13,
