@@ -1,9 +1,7 @@
-﻿{% extends "pagina-modelo.html" %}
-{% block style %}
-<link rel="stylesheet" type="text/css" href="/static/css/home.css">
-{% endblock %}
-
+﻿{% extends "pagina_modelo.html" %}
+{% load static %}
 {% block content %}
+<link rel="stylesheet" href="{% static 'css/home.css' %}">
     <div class="container main">
         <div class="item">
             <h1>Bem vindo a Plataforma online da CoteBiz</h1>

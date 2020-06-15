@@ -1,0 +1,59 @@
+{% extends "pagina_modelo.html" %}
+{% load static %}
+{% block content %}
+<link rel="stylesheet" href="{% static 'css/lista_de_pedidos.css' %}">
+<div class="conteudo">
+      
+    <div class="container">
+        <div class="row">
+            <a href="/criar_pedido/">
+                <div class="logo-container">
+                     <div class="logo face">
+                         <img src="{% static 'imagens/add-pedido.png' %}" alt="pedido de cotação">
+                     </div>
+                     <div class="brand">
+                         Novo pedido
+                     </div>
+                 </div>
+             </a>
+        </div>
+         <h1 class="text-center "><u>Filtro de Pesquisa</u></h1>
+        <form method="GET" action="#">
+            <div class="form-row">
+            <div class="form-group  col-md-2 col-lg-2">
+                <label for="numero_do_pedido"><strong>Numero do Pedido</strong></label>
+                <input type="text" class="form-control" id="numero_pedido" name="numero_pedido" placeholder="Numero do Pedido">  
+            </div>
+ 
+            <div class="form-group  col-md-2 col-lg-2">
+                <label for="razao_social"><strong>Razão Social</strong></label>
+                <input type="text" class="form-control" id="razao_social" name="razao_social" placeholder="Razão Social">  
+            </div>
+
+            <div class="form-group col-md-2 col-lg-2">
+                <label for="id_cnpj"><strong>CNPJ</strong></label>
+                <input type="text" class="form-control" id="id_cnpj" name="id_cnpj" placeholder="CNPJ">
+            </div>
+              <button type="submit" class="btn btn-primary mt-4 mb-3">Filtrar</button>
+            </div>
+      </form>
+      <h1 class="text-center "><u>Lista de Pedidos</u></h1>
+        <div class="row w-100">
+            <div class="col border bg-light" ><strong>Numero do Pedido</strong></div>
+            <div class="col border bg-light"><strong>Nome Fantasia</strong></div>
+            <div class="col border bg-light"><strong>Razão Social</strong></div>
+            <div class="col border bg-light"><strong>CNPJ</strong></div>
+        </div>
+        {% for item in pedido %}
+        <div class="container">
+            <div class="row w-100">
+                <div class="col border-bottom- bg-light" ><a onclick="limpar_campos()" href="/detalhar_pedido/{{item.id}}">{{ item.n_pedido }}</a></div>
+                <div class="col border-bottom-0 bg-light" ><a onclick="limpar_campos()" href="/detalhar_pedido/{{item.id}}">{{ item.nome }}</a></div>
+                <div class="col border-bottom-0 bg-light" ><a onclick="limpar_campos()" href="/detalhar_pedido/{{item.id}}">{{ item.razao_social }}</a></div>
+                <div class="col border-bottom-0 bg-light" ><a onclick="limpar_campos()" href="/detalhar_pedido/{{item.id}}">{{ item.cnpj }}</a></div>
+            
+            </div>
+        </div>
+        {% endfor %}
+</div>
+{% endblock %}

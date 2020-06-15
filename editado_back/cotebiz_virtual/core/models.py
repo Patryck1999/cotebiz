@@ -486,6 +486,7 @@ class Pedido_de_cotacao_clone(models.Model):
 class Pedido_de_cotacao_fornecedor(models.Model):
     fornecedor = models.CharField('Fornecedor', max_length=30)
     n_leilao =models.CharField('Número de Leilão', max_length=10)
+    arquivo = models.FileField(upload_to='arquivos/')
     observacao_1 = models.TextField('Observação1', max_length=100, null=True, blank=True)
     observacao_2 = models.TextField('Observação2', max_length=100, null=True, blank=True)
     observacao_3 = models.TextField('Observação3', max_length=100, null=True, blank=True)

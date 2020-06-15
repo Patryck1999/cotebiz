@@ -1,12 +1,11 @@
-{% extends "pagina-modelo.html" %}
-{% block style %}
-    <link rel="stylesheet" type="text/css" href="/static/css/lista-fornecedor.css">
-{% endblock %}
+{% extends "pagina_modelo.html" %}
+{% load static %}
 {% block content %}
+<link rel="stylesheet" href="{% static 'css/lista-fornecedor.css' %}">
 <div class="conteudo">
     <div class="container">
         <div class="row">
-            <a href="/cadastrar_fornecedor/">
+            <a onclick="limpar_campos()" href="/cadastrar_fornecedor/">
                 <div class="logo-container">
                      <div class="logo face">
                          <img src="/static/imagens/add-pedido.png" alt="pedido de cotação">

@@ -1,0 +1,24 @@
+.space{
+    padding-right: 5px !important; 
+    padding-bottom: 16px;
+}
+button.btn.botao1{
+    background-color: #f8f9fa;
+    color:#f8f9fa;
+}
+
+.produto1, .categoria1, .valor_base1, .unidade_medida1, .quantidade1, .marca1, .botao1{
+    margin-bottom: 16px;
+
+}
+ul{
+    padding-left: 10px;
+}
+li.list{
+    list-style: none;
+}
+div.espaco{
+    width: 27px;
+    height: 30px;
+    background-color: #f8f9fa;
+}

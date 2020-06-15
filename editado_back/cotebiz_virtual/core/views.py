@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.views.decorators.csrf import csrf_protect
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
@@ -7,6 +7,8 @@ from .models import *
 from .forms import *
 from django.views.generic import View
 from django.core.mail import send_mail
+from django.conf import settings
+from django.core.files.storage import FileSystemStorage
 
 def login_user(request):
     return render(request, 'login.html')
@@ -31,19 +33,23 @@ def logout_user(request):
     return redirect('/login_user/')
 
 @login_required(login_url='/login_user/')
-def home(request):
+def index(request):
     return render(request, 'index.html')
 
 @login_required(login_url='/login_user/')
-def envio_de_email_fornecedor(request):
-    pedido = Pedido_de_cotacao_clone.objects.all()
-    context={
-        'pedido':pedido
-    }
-    return render(request, 'email_fornecedor.html', context)
-
+def enviar_email_fornecedor(request):
+    if str(request.user) == 'admin':
+        pedido = Pedido_de_cotacao_clone.objects.all()
+        fornecedores = Fornecedor.objects.all()
+        context={
+            'pedido':pedido,
+            'fornecedores':fornecedores
+        }
+        return render(request, 'enviar_email_fornecedor.html', context)
+    else:
+        return redirect('/')
+        
 class SendFormEmail(View):
-
     def get(self, request):
 
         # Get the form data 
@@ -63,12 +69,11 @@ class SendFormEmail(View):
         ) 
 
         # Redirect to same page after form submit
-        return redirect('lista_de_pedidos') 
+        return redirect('listar_pedidos') 
 
 @login_required(login_url='/login_user/')
 def cadastrar_fornecedor(request):
     if str(request.user) == 'admin':
-        
         form = FornecedorForm(request.POST or None)
         context = {
             'form': form
@@ -80,9 +85,11 @@ def cadastrar_fornecedor(request):
             else:
                 messages.error(request, 'Erro ao cadastrar Fornecedor! Fornecedor já está cadastrado!')
         return render(request, 'cadastrar_fornecedor.html', context)
+    else:
+        return redirect('/')
 
 @login_required(login_url='/login_user/')
-def adicionar_pedido(request):
+def criar_pedido(request):
     if str(request.user) == 'admin':
         Pedido_de_cotacao_clone.objects.all().delete()
         return render(request, 'criar_pedido.html')
@@ -90,7 +97,7 @@ def adicionar_pedido(request):
         return redirect('/')
         
 @login_required(login_url='/login_user/')
-def adicionar_pedido_submit(request):
+def criar_pedido_submit(request):
     numero_do_pedido = request.POST.get('numero_do_pedido')
     data = request.POST.get('data')
     nome = request.POST.get('nome')
@@ -296,35 +303,7 @@ def adicionar_pedido_submit(request):
             produto19=produto19, categoria19=categoria19, valor_base19=valor_base19, unidade_medida19=unidade_medida19, marca19=marca19, quantidade19=quantidade19,
             produto20=produto20, categoria20=categoria20, valor_base20=valor_base20, unidade_medida20=unidade_medida20, marca20=marca20, quantidade20=quantidade20
             )
-    return redirect('envio_de_email_fornecedor')
-
-@login_required(login_url='/login_user/')
-def adicionar_categoria(request):
-    if str(request.user) == 'admin':
-        form = CategoriaForm(request.POST or None)
-        context = {
-            'form': form
-        }
-        if form.is_valid():
-            form.save()
-            return redirect('cadastrar_fornecedor')
-        return render(request, 'adicionar_categoria.html', context)
-    else:
-        return redirect('/')
-
-@login_required(login_url='/login_user/')
-def adicionar_email_fornecedor(request):
-    if str(request.user) == 'admin':
-        form = Email_fornecedorForm(request.POST or None)
-        context = {
-            'form': form
-        }
-        if form.is_valid():
-            form.save()
-            return redirect('cadastrar_fornecedor')
-        return render(request, 'adicionar_email_fornecedor.html', context)
-    else:
-        return redirect('/')
+    return redirect('enviar_email_fornecedor')
 
 @login_required(login_url='/login_user/')
 def listar_fornecedores(request):
@@ -371,7 +350,7 @@ def listar_produtos_cotados(request):
     else:
         return redirect('/')
 
-def lista_de_pedidos(request):
+def listar_pedidos(request):
     if str(request.user) == 'admin':
         pedido = Pedido_de_cotacao.objects.all()
         n_pedido_query = request.GET.get('numero_pedido')
@@ -391,12 +370,12 @@ def lista_de_pedidos(request):
             'pedido': pedido
         }
 
-        return render(request, "lista_de_pedidos.html", context)
+        return render(request, "listar_pedidos.html", context)
     else:
         return redirect('/')
 
 @login_required(login_url='/login_user/')
-def lista_de_sala_de_leilao(request):
+def listar_salas_de_leilao(request):
     pedido = Pedido_de_cotacao.objects.all()
     n_leilao_query = request.GET.get('n_leilao')
     nome_query = request.GET.get('nome')
@@ -411,12 +390,13 @@ def lista_de_sala_de_leilao(request):
         'pedido': pedido
     }
 
-    return render(request, "lista_de_sala_de_leilao.html", context)
+    return render(request, "listar_salas_de_leilao.html", context)
 
 @login_required(login_url='/login_user/')
 def detalhar_fornecedor(request, id):
     if str(request.user) == 'admin':
-        fornecedor = Fornecedor.objects.get(id=id)
+        # fornecedor = Fornecedor.objects.get(id=id)
+        fornecedor = get_object_or_404(Fornecedor, id=id)
         context = {
             'fornecedor':fornecedor
         }
@@ -426,7 +406,8 @@ def detalhar_fornecedor(request, id):
 
 def detalhar_pedido(request, id):
     if str(request.user) == 'admin':
-        pedido = Pedido_de_cotacao.objects.get(id=id)
+        # pedido = Pedido_de_cotacao.objects.get(id=id)
+        pedido = get_object_or_404(Pedido_de_cotacao, id=id)
         context = {
             'pedido':pedido
         }
@@ -437,7 +418,8 @@ def detalhar_pedido(request, id):
 
 def detalhar_produtos_cotados(request, id):
     if str(request.user) == 'admin':
-        pedido = Pedido_de_cotacao_fornecedor.objects.get(id=id)
+        # pedido = Pedido_de_cotacao_fornecedor.objects.get(id=id)
+        pedido = get_object_or_404(Pedido_de_cotacao_fornecedor,id=id)
         context = {
             'pedido':pedido
         }
@@ -447,7 +429,8 @@ def detalhar_produtos_cotados(request, id):
 
 @login_required(login_url='/login_user/')
 def detalhar_pedido_da_sala_de_leilao(request, id):
-        pedido = Pedido_de_cotacao.objects.get(id=id)
+        # pedido = Pedido_de_cotacao.objects.get(id=id)
+        pedido = get_object_or_404(Pedido_de_cotacao, id=id)
         context = {
             'pedido':pedido
         }
@@ -457,6 +440,9 @@ def detalhar_pedido_da_sala_de_leilao(request, id):
 def detalhar_pedido_da_sala_de_leilao_submit(request, id):
     fornecedor = request.POST.get('fornecedor')
     n_leilao = request.POST.get('n_leilao')
+    arquivo = request.FILES['arquivo']
+    arquivo_upload = FileSystemStorage()
+    arquivo_upload.save(arquivo.name, arquivo)
     observacao1 = request.POST.get('observacao_1')
     observacao2 = request.POST.get('observacao_2')
     observacao3 = request.POST.get('observacao_3')
@@ -477,7 +463,7 @@ def detalhar_pedido_da_sala_de_leilao_submit(request, id):
     observacao18 = request.POST.get('observacao_18')
     observacao19 = request.POST.get('observacao_19')
     observacao20 = request.POST.get('observacao_20')
-    pedido_de_cotacao_fornecedor = Pedido_de_cotacao_fornecedor.objects.create(n_leilao=n_leilao, fornecedor=fornecedor ,observacao_1=observacao1, 
+    pedido_de_cotacao_fornecedor = Pedido_de_cotacao_fornecedor.objects.create(arquivo=arquivo, n_leilao=n_leilao, fornecedor=fornecedor ,observacao_1=observacao1, 
     observacao_2=observacao2, observacao_3=observacao3, observacao_4=observacao4, observacao_5=observacao5,
     observacao_6=observacao6, observacao_7=observacao7, observacao_8=observacao8, observacao_9=observacao9,
     observacao_10=observacao10, observacao_11=observacao11, observacao_12=observacao12, observacao_13=observacao13,
@@ -489,7 +475,8 @@ def detalhar_pedido_da_sala_de_leilao_submit(request, id):
 def atualizar_fornecedor(request, id):
     if str(request.user) == 'admin':
 
-        fornecedor = Fornecedor.objects.get(id=id)
+        # fornecedor = Fornecedor.objects.get(id=id)
+        fornecedor = get_object_or_404(Fornecedor, id=id)
         form = FornecedorForm(request.POST or None, instance= fornecedor)
         context = {
             'form': form,
@@ -503,27 +490,18 @@ def atualizar_fornecedor(request, id):
                 messages.error(request, 'Erro ao Atualizar Fornecedor! Fornecedor já está cadastrado!')
         return render(request, 'atualizar_fornecedor.html', context)
 
-@login_required(login_url='/login_user/')        
-def atualizar_pedido(request, id):
-    if str(request.user) == 'admin':
-        fornecedor = Fornecedor.objects.get(id=id)
-        context = {
-            'form': form,
-            'fornecedor': fornecedor
-        }
-        if (request.method)== 'POST':
-            if form.is_valid():
-                form.save()
-                return redirect('listar_fornecedores')
-            else:
-                messages.error(request, 'Erro ao Atualizar Fornecedor! Fornecedor já está cadastrado!')
-        return render(request, 'atualizar_fornecedor.html', context)   
-
 @login_required(login_url='/login_user/')
-def delete_fornecedor(request, id):
+def deletar_fornecedor(request, id):
     if str(request.user) == 'admin':
-        fornecedor = Fornecedor.objects.get(id=id)
+        # fornecedor = Fornecedor.objects.get(id=id)
+        fornecedor = get_object_or_404(Fornecedor, id=id)
+
         fornecedor.delete()
         return redirect('listar_fornecedores')
     else:
         return redirect('/')
+
+@login_required(login_url='/login_user/')
+def error404(request, exception):
+    return render(request, '404.html')
+

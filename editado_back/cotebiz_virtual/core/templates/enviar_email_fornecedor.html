@@ -1,0 +1,50 @@
+{% extends "pagina_modelo.html" %}
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-xl-8 offset-xl-2 py-5">
+            <h1>Pedido de cotação criado!</h1>
+            <h3>Envie o email aos seus fornedores.</h3>
+
+            <form id="contact-form" action="{% url 'send_email' %}" role="form">
+                {% csrf_token %}
+                <div class="controls">
+                    <div class="row">
+                            <div class="form-group col-md-4">
+                                <label for="form_email">Email:</label>
+                                <input type="text" name="email" type="email" required>
+                            </div>
+                            <div class="form-group col-md-8">
+                                <label for="form_email">Lista de Email dos fornecedores:</label>
+                                <select size="5"  class="form-control">
+                                    {% for fornecedor in fornecedores %}
+                                        <option value="{{ fornecedor.email }}">{{ fornecedor.email }} - {{ fornecedor.categoria }}</option>
+                                    {% endfor %}
+                                </select>
+                            </div>
+                        </div>
+                    
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label for="form_message">Corpo da Mensagem:</label> 
+                                <textarea id="form_message" name="mensagem" class="form-control"
+                                    placeholder="Message for me *" rows="4" required="required"
+                                    data-error="Please, leave us a message.">
+{% for p in pedido %}Novo pedido de cotação aberto nº{{ p.n_leilao }}
+{% endfor %}
+                                    </textarea>
+                                <div class="help-block with-errors"></div>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <input type="submit" class="btn btn-success btn-send" value="Enviar">
+                        </div>
+                    </div>
+                </div>
+            </form>
+
+        </div>
+    </div>
+</div>
+{% endblock %}

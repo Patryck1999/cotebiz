@@ -1,12 +1,11 @@
-{% extends "pagina-modelo.html" %}
+{% extends "pagina_modelo.html" %}
+{% load static %}
 {% block content %}
-{% block style %}
-<link rel="stylesheet" type="text/css" href="/static/css/sala_de_cotacao.css" >
-{% endblock %}
-<form action="submit" method="POST">{% csrf_token %}
+<link rel="stylesheet" href="{% static 'css/sala_de_cotacao.css' %}">
+<form action="submit" method="POST" enctype="multipart/form-data">{% csrf_token %}
 <div class="container-fluid">
     <div class="row">
-      <div class="col-2">
+      <div class="col-md-2">
           <div class="container titulo">
               <span class="title">Produtos</span>
           </div>
@@ -114,7 +113,7 @@
 
         </div>
       </div>
-      <div class="col-8">
+      <div class="col-md-8">
         <div class="tab-content" id="nav-tabContent">
             <div class="tab-pane fade show active" id="list-description1" role="tabpanel" aria-labelledby="list-description1-list">
                         <table class="table">
@@ -125,7 +124,7 @@
                             <th scope="col">Unidade medida</th>
                             <th scope="col">Quantidade</th>
                             <th scope="col">Marca</th>
-                            <th scope="col">Data Fim</th>
+                            <th scope="col">Data de Inicio</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -135,7 +134,8 @@
                             <td>{{ pedido.unidade_medida1 }}</td>
                             <td>{{ pedido.quantidade1 }}</td>
                             <td>{{ pedido.marca1 }}</td>
-                            <td>xx/xx/xx</td>
+                            <td>{{ pedido.data_agora.day }}/{{ pedido.data_agora.month }}/{{ pedido.data_agora.year }}</td>
+                            
                         </tr>
                         </tbody>
                         </table>
@@ -721,15 +721,20 @@
         </div>
       </div>
       <div class="col-md-2">
-        <div class="container">
             <label for="">Fornecedor:</label>
             <input name="fornecedor" id="fornecedor" type="text" value="{{ user.get_username }}" readonly/>
-
-            <label for="">Nº de Leilão:</label>
-            <input id="n_leilao" name="n_leilao" type="text" value="{{ pedido.n_leilao }}" readonly/>
-        </div>
+            <label for="">Nº de Leilão:</label><br>
+            <input id="n_leilao" name="n_leilao" type="text" value="{{ pedido.n_leilao }}" readonly/><br>
       </div>
     </div>
+</div>
+<div class="container" align="center">
+    <div class="row w-100">
+        <div class="col">
+            <label for="">Caso prefira insira um arquivo com sua Cotação</label><br>
+            <input type="file" name="arquivo">
+        </div>  
+    </div> 
 </div>
 </div>
 <div class="row">

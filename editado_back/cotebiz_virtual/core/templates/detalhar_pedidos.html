@@ -1,10 +1,7 @@
-{% extends "pagina-modelo.html" %}
+{% extends "pagina_modelo.html" %}
+{% load static %}
 {% block content %}
-{% block style %}
-    <link rel="stylesheet" type="text/css" href="/static/css/fornecedor.css">
-    <link rel="stylesheet" type="text/css" href="/static/css/detalhar_pedidos.css">
-{% endblock %}
-
+<link rel="stylesheet" href="{% static 'css/fornecedor.css' %}">
 <h1 class="text-center">Detalhes do Pedido</h1>
 <div class="container ">
     <h2>Informações Básicas</h2>
@@ -84,411 +81,410 @@
         </div>
         <div class="form-group col-md-12">
             <h2>Produtos do Leilão</h2>
-            <hr>
-        </div>
-        <div class="form-group col-md-2">
-            <h5>Produto</h5>
-            <hr>
-        </div>
-        <div class="form-group col-md-2">
-            <h5>Categoria</h5>
-            <hr>
-        </div>
-        <div class="form-group col-md-2">
-            <h5>Valor Base</h5>
-            <hr>
         </div>
         <div class="form-group col-md-3">
-            <h5>Unidade de Medida</h5>
+            <h5 align="center">Produto</h5>
             <hr>
         </div>
         <div class="form-group col-md-2">
-            <h5>Quantidade</h5>
+            <h5 align="center">Categoria</h5>
+            <hr>
+        </div>
+        <div class="form-group col-md-2">
+            <h5 align="center">Valor Base</h5>
+            <hr>
+        </div>
+        <div class="form-group col-md-2">
+            <h5 align="center" title="Unidade de Medida">Uni. Medida</h5>
             <hr>
         </div>
         <div class="form-group col-md-1">
-            <h5>Marca</h5>
+            <h5 align="center" title="Quantidade">Qtd</h5>
             <hr>
         </div>
-        <div class="controle form-group col-md-2">
-            <h6>{{ pedido.produto1 }}</h6>
+        <div class="form-group col-md-2">
+            <h5 align="center">Marca</h5>
+            <hr>
         </div>
-        <div class="controle form-group col-md-2">
+        <div align="center" class="controle form-group col-md-3">
+            {{ pedido.produto1 }}
+        </div>
+        <div align="center" class="controle form-group col-md-2">
             {{ pedido.categoria1 }}
         </div>
-        <div class="controle form-group col-md-2">
+        <div align="center" class="controle form-group col-md-2">
             {{ pedido.valor_base1 }}
         </div>
-        <div class="controle form-group col-md-3">
+        <div align="center" class="controle form-group col-md-2">
             {{ pedido.unidade_medida1 }}
         </div>
-        <div class="controle form-group col-md-2">
+        <div align="center" class="controle form-group col-md-1">
             {{ pedido.quantidade1 }}
         </div>
-        <div class="controle form-group col-md-1">
+        <div align="center" class="controle form-group col-md-2">
             {{ pedido.marca1 }}
         </div>
 
-        <div class="controle form-group col-md-2">
+        <div align="center" class="controle form-group col-md-3">
             {{ pedido.produto2 }}
         </div>
-        <div class="controle form-group col-md-2">
+        <div align="center" class="controle form-group col-md-2">
             {{ pedido.categoria2 }}
         </div>
-        <div class="controle form-group col-md-2">
+        <div align="center" class="controle form-group col-md-2">
             {{ pedido.valor_base2 }}
         </div>
-        <div class="controle form-group col-md-3">
+        <div align="center" class="controle form-group col-md-2">
             {{ pedido.unidade_medida2 }}
         </div>
-        <div class="controle form-group col-md-2">
+        <div align="center" class="controle form-group col-md-1">
              {{ pedido.quantidade2 }}
         </div>
-        <div class="controle form-group col-md-1">
+        <div align="center" class="controle form-group col-md-2">
             {{ pedido.marca2 }}
         </div>
 
-        <div class="controle form-group col-md-2">
+        <div align="center" class="controle form-group col-md-3">
             {{ pedido.produto3 }}
         </div>
-        <div class="controle form-group col-md-2">
+        <div align="center" class="controle form-group col-md-2">
             {{ pedido.categoria3 }}
         </div>
-        <div class="controle form-group col-md-2">
+        <div align="center" class="controle form-group col-md-2">
              {{ pedido.valor_base3 }}
         </div>
-        <div class="controle form-group col-md-3">
+        <div align="center" class="controle form-group col-md-2">
             {{ pedido.unidade_medida3 }}
         </div>
-        <div class="controle form-group col-md-2">
+        <div align="center" class="controle form-group col-md-1">
             {{ pedido.quantidade3 }}
         </div>
-        <div class="controle form-group col-md-1">
+        <div align="center" class="controle form-group col-md-2">
             {{ pedido.marca3 }}
         </div>
 
-        <div class="controle form-group col-md-2">
+        <div align="center" class="controle form-group col-md-3">
             {{ pedido.produto4 }}
         </div>
-        <div class="controle form-group col-md-2">
+        <div align="center" class="controle form-group col-md-2">
             {{ pedido.categoria4 }}
         </div>
-        <div class="controle form-group col-md-2">
+        <div align="center" class="controle form-group col-md-2">
             {{ pedido.valor_base4 }}
         </div>
-        <div class="controle form-group col-md-3">
+        <div align="center" class="controle form-group col-md-2">
             {{ pedido.unidade_medida4 }}
         </div>
-        <div class="controle form-group col-md-2">
+        <div align="center" class="controle form-group col-md-1">
             {{ pedido.quantidade4 }}
         </div>
-        <div class="controle form-group col-md-1">
+        <div align="center" class="controle form-group col-md-2">
             {{ pedido.marca4 }}
         </div>
 
-        <div class="controle form-group col-md-2">
+        <div align="center" class="controle form-group col-md-3">
             {{ pedido.produto5 }}
         </div>
-        <div class="controle form-group col-md-2">
+        <div align="center" class="controle form-group col-md-2">
             {{ pedido.categoria5 }}
         </div>
-        <div class="controle form-group col-md-2">
+        <div align="center" class="controle form-group col-md-2">
             {{ pedido.valor_base5 }}
         </div>
-        <div class="controle form-group col-md-3">
+        <div align="center" class="controle form-group col-md-2">
             {{ pedido.unidade_medida5 }}
         </div>
-        <div class="controle form-group col-md-2">
+        <div align="center" class="controle form-group col-md-1">
             {{ pedido.quantidade5 }}
         </div>
-        <div class="controle form-group col-md-1">
+        <div align="center" class="controle form-group col-md-2">
             {{ pedido.marca5 }}
         </div>
 
-        <div class="controle form-group col-md-2">
+        <div align="center" class="controle form-group col-md-3">
             {{ pedido.produto6 }}
         </div>
-        <div class="controle form-group col-md-2">
+        <div align="center" class="controle form-group col-md-2">
             {{ pedido.categoria6 }}
         </div>
-        <div class="controle form-group col-md-2">
+        <div align="center" class="controle form-group col-md-2">
             {{ pedido.valor_base6 }}
         </div>
-        <div class="controle form-group col-md-3">
+        <div align="center" class="controle form-group col-md-2">
             {{ pedido.unidade_medida6 }}
         </div>
-        <div class="controle form-group col-md-2">
+        <div align="center" class="controle form-group col-md-1">
             {{ pedido.quantidade6 }}
         </div>
-        <div class="controle form-group col-md-1">
+        <div align="center" class="controle form-group col-md-2">
             {{ pedido.marca6 }}
         </div>
 
-        <div class="controle form-group col-md-2">
+        <div align="center" class="controle form-group col-md-3">
             {{ pedido.produto7 }}
         </div>
-        <div class="controle form-group col-md-2">
+        <div align="center" class="controle form-group col-md-2">
             {{ pedido.categoria7 }}
         </div>
-        <div class="controle form-group col-md-2">
+        <div align="center" class="controle form-group col-md-2">
             {{ pedido.valor_base7 }}
         </div>
-        <div class="controle form-group col-md-3">
+        <div align="center" class="controle form-group col-md-2">
             {{ pedido.unidade_medida7 }}
         </div>
-        <div class="controle form-group col-md-2">
+        <div align="center" class="controle form-group col-md-1">
             {{ pedido.quantidade7 }}
         </div>
-        <div class="controle form-group col-md-1">
+        <div align="center" class="controle form-group col-md-2">
             {{ pedido.marca7 }}
         </div>
 
-        <div class="controle form-group col-md-2">
+        <div align="center" class="controle form-group col-md-3">
             {{ pedido.produto8 }}
         </div>
-        <div class="controle form-group col-md-2">
+        <div align="center" class="controle form-group col-md-2">
             {{ pedido.categoria8 }}
         </div>
-        <div class="controle form-group col-md-2">
+        <div align="center" class="controle form-group col-md-2">
             {{ pedido.valor_base8 }}
         </div>
-        <div class="controle form-group col-md-3">
+        <div align="center" class="controle form-group col-md-2">
             {{ pedido.unidade_medida8 }}
         </div>
-        <div class="controle form-group col-md-2">
+        <div align="center" class="controle form-group col-md-1">
             {{ pedido.quantidade8 }}
         </div>
-        <div class="controle form-group col-md-1">
+        <div align="center" class="controle form-group col-md-2">
             {{ pedido.marca8 }}
         </div>
 
-        <div class="controle form-group col-md-2">
+        <div align="center" class="controle form-group col-md-3">
             {{ pedido.produto9 }}
         </div>
-        <div class="controle form-group col-md-2">
+        <div align="center" class="controle form-group col-md-2">
             {{ pedido.categoria9 }}
         </div>
-        <div class="controle form-group col-md-2">
+        <div align="center" class="controle form-group col-md-2">
             {{ pedido.valor_base9 }}
         </div>
-        <div class="controle form-group col-md-3">
+        <div align="center" class="controle form-group col-md-2">
             {{ pedido.unidade_medida9 }}
         </div>
-        <div class="controle form-group col-md-2">
+        <div align="center" class="controle form-group col-md-1">
             {{ pedido.quantidade9 }}
         </div>
-        <div class="controle form-group col-md-1">
+        <div align="center" class="controle form-group col-md-2">
             {{ pedido.marca9 }}
         </div>
 
-        <div class="controle form-group col-md-2">
+        <div align="center" class="controle form-group col-md-3">
             {{ pedido.produto10 }}
         </div>
-        <div class="controle form-group col-md-2">
+        <div align="center" class="controle form-group col-md-2">
             {{ pedido.categoria10 }}
         </div>
-        <div class="controle form-group col-md-2">
+        <div align="center" class="controle form-group col-md-2">
             {{ pedido.valor_base10 }}
         </div>
-        <div class="controle form-group col-md-3">
+        <div align="center" class="controle form-group col-md-2">
             {{ pedido.unidade_medida10 }}
         </div>
-        <div class="controle form-group col-md-2">
+        <div align="center" class="controle form-group col-md-1">
             {{ pedido.quantidade10 }}
         </div>
-        <div class="controle form-group col-md-1">
+        <div align="center" class="controle form-group col-md-2">
             {{ pedido.marca10 }}
         </div>
 
-        <div class="controle form-group col-md-2">
+        <div align="center" class="controle form-group col-md-3">
             {{ pedido.produto11 }}
         </div>
-        <div class="controle form-group col-md-2">
+        <div align="center" class="controle form-group col-md-2">
             {{ pedido.categoria11 }}
         </div>
-        <div class="controle form-group col-md-2">
+        <div align="center" class="controle form-group col-md-2">
             {{ pedido.valor_base11 }}
         </div>
-        <div class="controle form-group col-md-3">       
+        <div align="center" class="controle form-group col-md-2">       
             {{ pedido.unidade_medida11 }}
         </div>
-        <div class="controle form-group col-md-2">
+        <div align="center" class="controle form-group col-md-1">
             {{ pedido.quantidade11 }}
         </div>
-        <div class="controle form-group col-md-1">
+        <div align="center" class="controle form-group col-md-2">
             {{ pedido.marca11 }}
         </div>
 
-        <div class="controle form-group col-md-2">
+        <div align="center" class="controle form-group col-md-3">
             {{ pedido.produto12 }}
         </div>
-        <div class="controle form-group col-md-2">
+        <div align="center" class="controle form-group col-md-2">
             {{ pedido.categoria12 }}
         </div>
-        <div class="controle form-group col-md-2">
+        <div align="center" class="controle form-group col-md-2">
             {{ pedido.valor_base12 }}
         </div>
-        <div class="controle form-group col-md-3"> 
+        <div align="center" class="controle form-group col-md-2"> 
             {{ pedido.unidade_medida12 }}
         </div>
-        <div class="controle form-group col-md-2">
+        <div align="center" class="controle form-group col-md-1">
             {{ pedido.quantidade12 }}
         </div>
-        <div class="controle form-group col-md-1">
+        <div align="center" class="controle form-group col-md-1">
             {{ pedido.marca12 }}
         </div>
 
-        <div class="controle form-group col-md-2">
+        <div align="center" class="controle form-group col-md-3">
             {{ pedido.produto13 }}
         </div>
-        <div class="controle form-group col-md-2">
+        <div align="center" class="controle form-group col-md-2">
             {{ pedido.categoria13 }}
         </div>
-        <div class="controle form-group col-md-2">
+        <div align="center" class="controle form-group col-md-2">
             {{ pedido.valor_base13 }}
         </div>
-        <div class="controle form-group col-md-3">
+        <div align="center" class="controle form-group col-md-2">
             {{ pedido.unidade_medida13 }}
         </div>
-        <div class="controle form-group col-md-2">
+        <div align="center" class="controle form-group col-md-1">
             {{ pedido.quantidade13 }}
         </div>
-        <div class="controle form-group col-md-1">
+        <div align="center" class="controle form-group col-md-2">
             {{ pedido.marca13 }}
         </div>
 
-        <div class="controle form-group col-md-2">
+        <div align="center" class="controle form-group col-md-3">
             {{ pedido.produto14 }}
         </div>
-        <div class="controle form-group col-md-2">
+        <div align="center" class="controle form-group col-md-2">
             {{ pedido.categoria14 }}
         </div>
-        <div class="controle form-group col-md-2">
+        <div align="center" class="controle form-group col-md-2">
             {{ pedido.valor_base14 }}
         </div>
-        <div class="controle form-group col-md-3">   
+        <div align="center" class="controle form-group col-md-2">   
             {{ pedido.unidade_medida14 }}
         </div>
-        <div class="controle form-group col-md-2">
+        <div align="center" class="controle form-group col-md-1">
             {{ pedido.quantidade14 }}
         </div>
-        <div class="controle form-group col-md-1">
+        <div align="center" class="controle form-group col-md-2">
             {{ pedido.marca14 }}
         </div>
 
-        <div class="controle form-group col-md-2">
+        <div align="center" class="controle form-group col-md-3">
             {{ pedido.produto15 }}
         </div>
-        <div class="controle form-group col-md-2">
+        <div align="center" class="controle form-group col-md-2">
             {{ pedido.categoria15 }}
         </div>
-        <div class="controle form-group col-md-2">
+        <div align="center" class="controle form-group col-md-2">
             {{ pedido.valor_base15 }}
         </div>
-        <div class="controle form-group col-md-3">
+        <div align="center" class="controle form-group col-md-2">
             {{ pedido.unidade_medida15 }}
         </div>
-        <div class="controle form-group col-md-2">
+        <div align="center" class="controle form-group col-md-1">
             {{ pedido.quantidade15 }}
         </div>
-        <div class="controle form-group col-md-1">
+        <div align="center" class="controle form-group col-md-2">
             {{ pedido.marca15 }}
         </div>
 
-        <div class="controle form-group col-md-2">
+        <div align="center" class="controle form-group col-md-3">
             {{ pedido.produto16 }}
         </div>
-        <div class="controle form-group col-md-2">
+        <div align="center" class="controle form-group col-md-2">
              {{ pedido.categoria16 }}
         </div>
-        <div class="controle form-group col-md-2">
+        <div align="center" class="controle form-group col-md-2">
             {{ pedido.valor_base16 }}
         </div>
-        <div class="controle form-group col-md-3">
+        <div align="center" class="controle form-group col-md-2">
             {{ pedido.unidade_medida16 }}
         </div>
-        <div class="controle form-group col-md-2">
+        <div align="center" class="controle form-group col-md-1">
             {{ pedido.quantidade16 }}
         </div>
-        <div class="controle form-group col-md-1">
+        <div align="center" class="controle form-group col-md-2">
             {{ pedido.marca16 }}
         </div>
 
-        <div class="controle form-group col-md-2">
+        <div align="center" class="controle form-group col-md-3">
             {{ pedido.produto17 }}
         </div>
-        <div class="controle form-group col-md-2">
+        <div align="center" class="controle form-group col-md-2">
              {{ pedido.categoria17 }}
         </div>
-        <div class="controle form-group col-md-2">
+        <div align="center" class="controle form-group col-md-2">
               {{ pedido.valor_base17 }}
         </div>
-        <div class="controle form-group col-md-3">  
+        <div align="center" class="controle form-group col-md-2">  
             {{ pedido.unidade_medida17 }}
         </div>
-        <div class="controle form-group col-md-2">
+        <div align="center" class="controle form-group col-md-1">
             {{ pedido.quantidade17 }}
         </div>
-        <div class="controle form-group col-md-1">
+        <div align="center" class="controle form-group col-md-2">
             {{pedido.marca17 }}
         </div>
 
-        <div class="controle form-group col-md-2">
+        <div align="center" class="controle form-group col-md-3">
             {{ pedido.produto18 }}
         </div>
-        <div class="controle form-group col-md-2">
+        <div align="center" class="controle form-group col-md-2">
             {{ pedido.categoria18 }}
         </div>
-        <div class="controle form-group col-md-2">
+        <div align="center" class="controle form-group col-md-2">
             {{ pedido.valor_base18 }}
         </div>
-        <div class="controle form-group col-md-3">  
+        <div align="center" class="controle form-group col-md-2">  
             {{ pedido.unidade_medida18 }}
         </div>
-        <div class="controle form-group col-md-2">
+        <div align="center" class="controle form-group col-md-1">
             {{ pedido.quantidade18 }}
         </div>
-        <div class="controle form-group col-md-1">
+        <div align="center" class="controle form-group col-md-2">
             {{ pedido.marca18 }}
         </div>
 
-        <div class="controle form-group col-md-2">
+        <div align="center" class="controle form-group col-md-3">
             {{ pedido.produto19 }}
         </div>
-        <div class="controle form-group col-md-2">
+        <div align="center" class="controle form-group col-md-2">
             {{ pedido.categoria19 }}
         </div>
-        <div class="controle form-group col-md-2">
+        <div align="center" class="controle form-group col-md-2">
             {{ pedido.valor_base19 }}
         </div>
-        <div class="controle form-group col-md-3"> 
+        <div align="center" class="controle form-group col-md-2"> 
             {{ pedido.unidade_medida19 }}
         </div>
-        <div class="controle form-group col-md-2">
+        <div align="center" class="controle form-group col-md-1">
             {{ pedido.quantidade19 }}
         </div>
-        <div class="controle form-group col-md-1">
+        <div align="center" class="controle form-group col-md-2">
             {{pedido.marca19 }}
         </div>
 
-        <div class="controle form-group col-md-2">
+        <div align="center" class="controle form-group col-md-3">
             {{ pedido.produto20 }}
         </div>
-        <div class="controle form-group col-md-2">
+        <div align="center" class="controle form-group col-md-2">
             {{ pedido.categoria20 }}
         </div>
-        <div class="controle form-group col-md-2">
+        <div align="center" class="controle form-group col-md-2">
             {{ pedido.valor_base20 }}
         </div>
-        <div class="controle form-group col-md-3">  
+        <div align="center" class="controle form-group col-md-2">  
             {{ pedido.unidade_medida20 }}
         </div>
-        <div class="controle form-group col-md-2">
+        <div align="center" class="controle form-group col-md-1">
             {{ pedido.quantidade20 }}
         </div>
-        <div class="controle form-group col-md-1">
+        <div align="center" class="controle form-group col-md-2">
             {{ pedido.marca20 }}
-        </div>
+        </div> 
     </div>
 </div>
 </div>

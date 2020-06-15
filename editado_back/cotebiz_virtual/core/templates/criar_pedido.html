@@ -1,8 +1,7 @@
-{% extends "pagina-modelo.html" %}
-{% block style %}
-    <link rel="stylesheet" type="text/css" href="/static/css/pedido.css" >
-{% endblock %}
+{% extends "pagina_modelo.html" %}
+{% load static %}
 {% block content %}
+<link rel="stylesheet" href="{% static 'css/pedido.css' %}">
 <form action="submit" method="POST">{% csrf_token %}
     <h1 class="text-center ">Cadastro de  Pedido</h1>
     <div class="container">
@@ -110,8 +109,19 @@
             <div class="space form-group col-md-2">
                 <label for="id_categoria"><strong>Categoria</strong></label>
                 <ul class="remove form-row categoria"  id="categoria_list">
-                    <li class="list col-md-12"><input class="categoria1 form-control col-md-12" type="text" name="categoria1" id="categoria1" required></li>
-
+                    <li class="list col-md-12">
+                        <select id="categoria1" name="categoria1" class="categoria1 col-md-12 form-control" required>
+                            <option value="">...</option>
+                            <option>Material de Limpeza e Higiene</option>
+                            <option>Material de Copa</option>
+                            <option>Alimentos em Geral</option>
+                            <option>Frutas e Verduras</option>
+                            <option>Material de Escritório</option>
+                            <option>Bebidas</option>
+                            <option>Descartáveis e Embalagens</option>
+                            <option>Itens de Manutenção Básica</option>
+                        </select>
+                    </li>
                 </ul>
             </div>
             <div class="space form-group col-md-2"  id="valor">
@@ -121,14 +131,24 @@
                 </ul>
             </div>
             <div class="space form-group col-md-2"  >
-                <label for="id_unidade_de_medida"><strong>Unidade</strong></label>
+                <label for="id_unidade_de_medida" title="Unidade de Medida">
+                <strong>Uni. Medida</strong></label>
                 <ul class="remove form-row unidade-medida" id="unidade_medida_list">
-                    <li class="list col-md-12"><input class="unidade_medida1 form-control col-md-12" type="text" name="unidade_medida1" id="unidade_medida1" required></li>
-
+                    <li class="list col-md-12">
+                        <select class="unidade_medida1 form-control col-md-12" name="unidade_medida1" id="unidade_medida1" required>
+                            <option value="">...</option>
+                            <option>Caixa</option>
+                            <option>Fardo</option>
+                            <option>Litro</option>
+                            <option>Pacote</option>
+                            <option>Unidade</option>
+                            <option>Par</option>
+                        </select>
+                    </li>
                 </ul>
             </div>
             <div class="space form-group col-md-1"  >
-                <label for="id_quantidade"><strong>Qtd</strong></label>
+                <label for="id_quantidade" title="Quantidade"><strong>Qtd</strong></label>
                 <ul class="remove form-row quantidade" id="quantidade_list">
                     <li class="list col-md-12"><input class="quantidade1 form-control col-md-12" type="text" name="quantidade1" id="quantidade1" required></li>
 

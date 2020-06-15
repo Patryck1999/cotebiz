@@ -1,9 +1,7 @@
-{% extends "pagina-modelo.html" %}
+{% extends "pagina_modelo.html" %}
+{% load static %}
 {% block content %}
-{% block style %}
-    <link rel="stylesheet" type="text/css" href="/static/css/fornecedor.css">
-{% endblock %}
-
+<link rel="stylesheet" href="{% static 'css/fornecedor.css' %}">
 <h1 class="text-center">Detalhes dos Produtos Cotados</h1>
 <div class="container ">
     
@@ -20,6 +18,7 @@
         </div>
         <div class="form-group col-md-12">
             <h2>Cotação do Produto</h2>
+            <a href="{{ pedido.arquivo.url }}">{{ pedido.arquivo }}</a>
         </div>
         <div class="form-group col-md-12">
             {{ pedido.observacao_1 }}

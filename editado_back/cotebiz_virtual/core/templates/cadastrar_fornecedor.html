@@ -1,9 +1,7 @@
-{% extends "pagina-modelo.html" %}
+{% extends "pagina_modelo.html" %}
+{% load static %}
 {% block content %}
-{% block style %}
-    <link rel="stylesheet" type="text/css" href="/static/css/fornecedor.css">
-{% endblock %}
-
+<link rel="stylesheet" href="{% static 'css/fornecedor.css' %}">
 <form id="myForm" method="POST">{% csrf_token %}
     <div class="container ">
         <h1 class="text-center ">Cadastro de  Fornecedor</h1>
