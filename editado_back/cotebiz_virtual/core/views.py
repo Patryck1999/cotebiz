@@ -28,7 +28,6 @@ def login_submit(request):
     
 @login_required(login_url='/login_user/')
 def logout_user(request):
-    print(request.user)
     logout(request)
     return redirect('/login_user/')
 
@@ -440,9 +439,7 @@ def detalhar_pedido_da_sala_de_leilao(request, id):
 def detalhar_pedido_da_sala_de_leilao_submit(request, id):
     fornecedor = request.POST.get('fornecedor')
     n_leilao = request.POST.get('n_leilao')
-    arquivo = request.FILES['arquivo']
-    arquivo_upload = FileSystemStorage()
-    arquivo_upload.save(arquivo.name, arquivo)
+    arquivo = request.FILES.get('arquivo')
     observacao1 = request.POST.get('observacao_1')
     observacao2 = request.POST.get('observacao_2')
     observacao3 = request.POST.get('observacao_3')
@@ -463,7 +460,7 @@ def detalhar_pedido_da_sala_de_leilao_submit(request, id):
     observacao18 = request.POST.get('observacao_18')
     observacao19 = request.POST.get('observacao_19')
     observacao20 = request.POST.get('observacao_20')
-    pedido_de_cotacao_fornecedor = Pedido_de_cotacao_fornecedor.objects.create(arquivo=arquivo, n_leilao=n_leilao, fornecedor=fornecedor ,observacao_1=observacao1, 
+    pedido_de_cotacao_fornecedor = Pedido_de_cotacao_fornecedor.objects.create(n_leilao=n_leilao, fornecedor=fornecedor, arquivo=arquivo ,observacao_1=observacao1, 
     observacao_2=observacao2, observacao_3=observacao3, observacao_4=observacao4, observacao_5=observacao5,
     observacao_6=observacao6, observacao_7=observacao7, observacao_8=observacao8, observacao_9=observacao9,
     observacao_10=observacao10, observacao_11=observacao11, observacao_12=observacao12, observacao_13=observacao13,

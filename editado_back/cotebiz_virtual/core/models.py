@@ -1,37 +1,5 @@
 from django.db import models
 from django.contrib.auth.models import User
-# Create your models here.
-class Categoria(models.Model):
-    categoria = models.CharField('Categoria', max_length=20, unique=True)
-
-    class Meta:
-        verbose_name ='Categoria'
-        verbose_name_plural ='Categorias'
-        
-
-    def __str__(self):
-        return str(self.categoria)
-
-
-class Email_fornecedor(models.Model):
-    email = models.EmailField('email', max_length=100, unique=True)
-    class Meta:
-        verbose_name ='Email_Fornecedor'
-        verbose_name_plural ='Email_Fornecedores'
-        
-
-    def __str__(self):
-        return str(self.email)   
-
-class Email_fornecedor_envio(models.Model):
-    email = models.ForeignKey(Email_fornecedor, on_delete=models.CASCADE)
-    class Meta:
-        verbose_name ='Email_fornecedor_envio'
-        verbose_name_plural ='Email_fornecedor_envio'
-        
-
-    def __str__(self):
-        return str(self.email)   
 
 class Fornecedor(models.Model):
     fornecedor = models.CharField('Nome Fantasia', max_length=40, unique=True)
@@ -60,6 +28,7 @@ class Fornecedor(models.Model):
     email = models.CharField('Email', max_length=150, null=True, blank=True)
     observacao = models.CharField('Observação', max_length=400, null=True, blank=True)
 
+
     class Meta:
         verbose_name ='Fornecedor'
         verbose_name_plural ='Fornecedores'
@@ -68,51 +37,6 @@ class Fornecedor(models.Model):
         return str(self.fornecedor)
 
 
-class Produto(models.Model):
-    produto = models.CharField('Produto', max_length=20)
-    valor_base = models.CharField('Valor Base', max_length=20)
-    categoria = models.CharField('Categoria', max_length=20)
-    unidade_medida = models.CharField('Unidade de Medida', max_length=2)
-    marca = models.CharField('Marca', max_length=20)
-
-    class Meta:
-        verbose_name ='Produto'
-        verbose_name_plural ='Produtos'
-        
-
-    def __str__(self):
-        return str(self.produto)
-
-
-class Email_cliente(models.Model):
-    email = models.EmailField('email', unique=True)
-    class Meta:
-        verbose_name ='Email_Cliente'
-        verbose_name_plural ='Email_Clientes'
-        
-
-    def __str__(self):
-        return str(self.email)   
-        
-
-class Cliente(models.Model):
-    cliente = models.CharField('Cliente', max_length=80)
-    plano = models.CharField('Plano', max_length=20)
-    cpf = models.CharField('CPF', max_length=14)
-    rua = models.CharField('Rua', max_length=100)
-    numero = models.CharField('Número', max_length=10)
-    bairro = models.CharField('Bairro', max_length=40)
-    email = models.CharField('Email', max_length=40)
-
-    class Meta:
-        verbose_name ='Cliente'
-        verbose_name_plural ='Clientes'
-        
-
-    def __str__(self):
-        return str(self.cliente)
-
-     
 class Pedido_de_cotacao(models.Model):
     data_agora = models.DateTimeField()
     n_pedido = models.CharField('Numero do pedido', max_length=10, null=True, blank=True)
@@ -293,7 +217,6 @@ class Pedido_de_cotacao(models.Model):
     class Meta:
         verbose_name ='Pedido_de_cotacao'
         verbose_name_plural ='Pedidos_de_cotacao'
-
 
     def __str__(self):
         return str(self.nome)   
@@ -479,14 +402,13 @@ class Pedido_de_cotacao_clone(models.Model):
         verbose_name ='Pedido_de_cotacao_clone'
         verbose_name_plural ='Pedido_de_cotacao_clone'
 
-
     def __str__(self):
         return str(self.nome)
 
 class Pedido_de_cotacao_fornecedor(models.Model):
     fornecedor = models.CharField('Fornecedor', max_length=30)
     n_leilao =models.CharField('Número de Leilão', max_length=10)
-    arquivo = models.FileField(upload_to='arquivos/')
+    arquivo = models.FileField(upload_to='arquivos')
     observacao_1 = models.TextField('Observação1', max_length=100, null=True, blank=True)
     observacao_2 = models.TextField('Observação2', max_length=100, null=True, blank=True)
     observacao_3 = models.TextField('Observação3', max_length=100, null=True, blank=True)
@@ -513,18 +435,5 @@ class Pedido_de_cotacao_fornecedor(models.Model):
         verbose_name ='Pedido_de_cotacao_fornecedor'
         verbose_name_plural ='Pedido_de_cotacao_fornecedores'
 
-
     def __str__(self):
-        return str(self.observacao_1)   
-
-    
-class Sala_de_leilao(models.Model):
-    pedido = models.CharField('Pedido_de_cotacao', max_length=20)
-
-    class Meta:
-        verbose_name ='Sala_de_leilao'
-        verbose_name_plural ='Salas_de_leilao'
-        
-
-    def __str__(self):
-        return str(self.pedido)   
+        return str(self.fornecedor)   

@@ -70,6 +70,10 @@ img{
   width: 18px;
 }
 
+.hidden{
+	display: none !important;
+}
+
 @media only screen and (max-width: 992px) {
   div.logon{
     margin-left: 0px;
@@ -77,7 +81,4 @@ img{
   div.dropdown-menu.show{
     width: 6rem;
   }
-}
-.hidden{
-	display: none !important;
 }

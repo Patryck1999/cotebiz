@@ -1,7 +1,5 @@
 from django.urls import path
 from core import views
-from django.contrib.staticfiles.urls import static, staticfiles_urlpatterns
-from django.conf import settings
 
 urlpatterns = [
     path('login_user/', views.login_user, name='login_user'),
@@ -25,7 +23,3 @@ urlpatterns = [
     path('atualizar_fornecedor/<int:id>/', views.atualizar_fornecedor, name='atualizar_fornecedor'),
     path('deletar_fornecedor/<int:id>/', views.deletar_fornecedor, name='deletar_fornecedor'),   
 ]
-urlpatterns += staticfiles_urlpatterns()
-urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
-    
-# CRUD - CREATE, READ, UPDATE, DELETE
