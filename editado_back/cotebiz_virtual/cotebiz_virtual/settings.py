@@ -24,11 +24,11 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'tv^y%myudzops!srgq1xg9eik579(!3_yqhl+m&6o-hhl63y15'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False # Produção
-ALLOWED_HOSTS = ['cotebiz-dpx3.herokuapp.com'] # Produção
+# DEBUG = False # Produção
+# ALLOWED_HOSTS = ['cotebiz-dpx3.herokuapp.com'] # Produção
 
-# DEBUG = True # Desenvolvimento
-# ALLOWED_HOSTS = [] # Desenvolvimento
+DEBUG = True # Desenvolvimento
+ALLOWED_HOSTS = [] # Desenvolvimento
 
 
 
@@ -82,6 +82,13 @@ WSGI_APPLICATION = 'cotebiz_virtual.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
 
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': 'cotebiz',
+    }
+}
+
 """DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
@@ -92,9 +99,9 @@ WSGI_APPLICATION = 'cotebiz_virtual.wsgi.application'
         'PORT': '5432',
     }
 }"""
-DATABASES = {
+"""DATABASES = {
     'default': dj_database_url.config()
-}
+}"""
 
 
 # Password validation
