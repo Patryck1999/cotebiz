@@ -97,8 +97,8 @@ def criar_pedido(request):
         
 @login_required(login_url='/login_user/')
 def criar_pedido_submit(request):
-    numero_do_pedido = request.POST.get('numero_do_pedido')
     data = request.POST.get('data')
+    numero_do_pedido = request.POST.get('numero_do_pedido')
     nome = request.POST.get('nome')
     razao_social = request.POST.get('razao_social')
     cnpj = request.POST.get('cnpj')

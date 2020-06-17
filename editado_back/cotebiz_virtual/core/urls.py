@@ -1,5 +1,6 @@
 from django.urls import path
 from core import views
+from django.contrib.auth import views as auth_views
 
 urlpatterns = [
     path('login_user/', views.login_user, name='login_user'),
@@ -21,5 +22,9 @@ urlpatterns = [
     path('detalhar_pedido_da_sala_de_leilao/<int:id>/', views.detalhar_pedido_da_sala_de_leilao, name='detalhar_pedido_da_sala_de_leilao'),
     path('detalhar_pedido_da_sala_de_leilao/<int:id>/submit', views.detalhar_pedido_da_sala_de_leilao_submit, name='detalhar_pedido_da_sala_de_leilao_submit'),
     path('atualizar_fornecedor/<int:id>/', views.atualizar_fornecedor, name='atualizar_fornecedor'),
-    path('deletar_fornecedor/<int:id>/', views.deletar_fornecedor, name='deletar_fornecedor'),   
+    path('deletar_fornecedor/<int:id>/', views.deletar_fornecedor, name='deletar_fornecedor'),
+    path('resetar_senha/', auth_views.PasswordResetView.as_view(template_name="resetar_senha.html"), name="resetar_senha" ),
+    path('enviar_email_para_resetar_senha/', auth_views.PasswordResetDoneView.as_view(template_name="enviar_email_para_resetar_senha.html"), name="enviar_email_para_resetar"),
+    path('reset/<uidb64>/<token>/', auth_views.PasswordResetConfirmView.as_view(template_name="alterar_senha.html"), name="alterar_senha"),
+    path('senha_alterada/', auth_views.PasswordResetCompleteView.as_view(template_name="senha_alterada.html"), name="senha_alterada"),
 ]
