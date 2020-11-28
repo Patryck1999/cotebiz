@@ -1,5 +1,6 @@
 # Projeto_OPE-site-
 Site de leilão reverso da cotebiz
+    A ideia do leilão reverso é facilitar a rotina de um intermediador através de uma plataforma, para que ele possa cotar diversos produtos, tendo como base do valor do produto que procura e assim varios fornedores distintos podem lançar seus respectivos valores, sendo o melhor preço o vencedor.
 
 /////////////////////////
 
